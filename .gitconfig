@@ -1,0 +1,7 @@
+[user]
+	name = Dave Menninger
+	email = dave.menninger@gmail.com
+[core]
+	editor = vim
+[color]
+	diff = auto
