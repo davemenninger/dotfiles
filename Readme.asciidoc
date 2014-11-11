@@ -1,0 +1,7 @@
+Finally hopping on the dotfiles bandwagon...
+
+== Credits
+
+* tpope: https://github.com/tpope/vim-pathogen , https://github.com/tpope/vim-sensible , https://github.com/tpope/vim-sleuth
+* http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
+
