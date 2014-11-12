@@ -8,4 +8,5 @@
 	ui = true
 [merge]
 	tool = vimdiff
-
+[credential]
+	helper = cache
