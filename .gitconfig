@@ -10,3 +10,5 @@
 	tool = vimdiff
 [credential]
 	helper = cache
+[alias]
+	ec = config --global -e
