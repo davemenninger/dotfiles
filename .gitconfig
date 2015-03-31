@@ -12,3 +12,4 @@
 	helper = cache
 [alias]
 	ec = config --global -e
+	st = status
