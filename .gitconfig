@@ -13,3 +13,6 @@
 [alias]
 	ec = config --global -e
 	st = status
+	hist = log --pretty=format:'%Cred%h%Creset %C(bold blue)%ad%Creset | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
+[include]
+	path = ~/.gitconfig_local
