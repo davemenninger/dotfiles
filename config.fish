@@ -102,8 +102,3 @@ function fish_prompt --description 'Write out the prompt'
   set_color normal
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
 end
-
-# Docker aliases
-alias dockercleanimages "sudo docker images --no-trunc | grep none | awk '{print $3}' | xargs -r docker rmi"
-alias dockercleancontainers "sudo docker ps -a --no-trunc | grep 'Exit' | awk '{print $3}' "
-alias dockerclean "dockercleancontainers; and dockercleanimages"
