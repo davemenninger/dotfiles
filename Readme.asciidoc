@@ -2,7 +2,7 @@ Finally hopping on the dotfiles bandwagon...
 
 == Notes to self
 
-* to get the submodules you have to do `git submodule update`
+* to get the submodules you have to do `git submodule init` and then `git submodule update`
 
 == Credits
 
