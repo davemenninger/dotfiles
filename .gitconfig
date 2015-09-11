@@ -1,10 +1,10 @@
 [user]
 	name = Dave Menninger
-	email = dave.menninger@gmail.com
 [core]
 	editor = vim
 	trustctime = false
 	filemode = false
+	excludesfile = /Users/dmenninger/.gitignore_global
 [color]
 	diff = auto
 	ui = true
@@ -34,3 +34,5 @@
 	keepbackups = false
 	prompt = false
 	trustexitcode = false
+[include]
+	path = ~/.gitconfiglocal
