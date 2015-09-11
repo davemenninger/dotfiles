@@ -1,3 +1,5 @@
+#source ~/perl5/perlbrew/etc/perlbrew.fish
+
 # Colors
 set normal (set_color normal)
 set magenta (set_color magenta)
@@ -101,4 +103,8 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' "$__fish_prompt_user" "$USER" "$__fish_prompt_normal" @ "$__fish_prompt_host" "$__fish_prompt_hostname" "$__fish_prompt_normal" ' ' "$__fish_prompt_cwd" (prompt_pwd)
   set_color normal
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
+end
+
+function mutt
+    bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv;
 end
