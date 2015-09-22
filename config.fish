@@ -1,4 +1,6 @@
-#source ~/perl5/perlbrew/etc/perlbrew.fish
+set SHELL /usr/local/bin/fish
+set PATH $PATH ~/bin
+source ~/perl5/perlbrew/etc/perlbrew.fish
 
 # Colors
 set normal (set_color normal)
