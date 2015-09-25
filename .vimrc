@@ -19,6 +19,12 @@ set modelines=0
 set diffopt=filler,vertical
 set backspace=indent,eol,start
 
+set splitbelow
+set splitright
+
+set ignorecase
+set smartcase
+
 set viminfo='25,\"50,n~/.viminfo
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
