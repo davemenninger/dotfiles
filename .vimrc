@@ -9,6 +9,7 @@ execute pathogen#infect()
 syntax on
 
 set background=dark
+colorscheme slate
 
 filetype plugin indent on
 
@@ -19,11 +20,47 @@ set modelines=0
 set diffopt=filler,vertical
 set backspace=indent,eol,start
 
+set tabstop=8 " make real tabs display as 8 spaces
+set softtabstop=4 " make all new tabs 4 spaces
+set shiftwidth=4 " how many spaces << and >> creates
+set expandtab " all new tabs should use spaces
+
 set splitbelow
 set splitright
 
 set ignorecase
 set smartcase
+
+set relativenumber
+set cursorline
+set wildmenu
+
+" make arrows keys not work in order to learn hjkl movement
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" move across a wrapped line
+nnoremap j gj
+nnoremap k gk
+
+" don't need to hit shift
+nnoremap ; :
+
+" don't need to hunt for corner of keyboard
+inoremap jk <ESC>
+
+" folding
+set foldenable
+"set foldnestmax=10
+set foldmethod=indent
+nnoremap <space> za
 
 set viminfo='25,\"50,n~/.viminfo
 if has("autocmd")
