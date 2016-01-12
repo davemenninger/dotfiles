@@ -56,6 +56,10 @@ nnoremap ; :
 " don't need to hunt for corner of keyboard
 inoremap jk <ESC>
 
+" edit my .vimrc
+nnoremap <leader>ev :vsplit $MYVIMRC<cr>
+nnoremap <leader>sv :source $MYVIMRC<cr>
+
 " folding
 set foldenable
 "set foldnestmax=10
