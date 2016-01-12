@@ -24,12 +24,19 @@ cd $dir
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks
+echo "Moving any existing dotfiles from ~ to $olddir"
 for file in $files; do
-    echo "Moving any existing dotfiles from ~ to $olddir"
-    mv ~/$file ~/dotfiles_old/
+    if [ -f "$file" ]
+    then
+        echo "moving $file to dotfiles_old"
+        mv ~/$file ~/dotfiles_old/
+    fi
     echo "Creating symlink to $file in home directory."
     ln -s $dir/$file ~/$file
 done
 
-mv ~/.config/fish/config.fish ~/dotfiles_old/
+if [ -f ~/.config/fish/config.fish ]
+then
+    mv ~/.config/fish/config.fish ~/dotfiles_old/
+fi
 ln -s $dir/config.fish ~/.config/fish/config.fish
