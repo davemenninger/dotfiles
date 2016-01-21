@@ -3,6 +3,7 @@ set nocompatible
 
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'podchecker']
+let g:airline_powerline_fonts = 1
 
 execute pathogen#infect()
 
@@ -34,6 +35,8 @@ set smartcase
 set relativenumber
 set cursorline
 set wildmenu
+set colorcolumn=80
+highlight ColorColumn ctermbg=darkgrey guibg=darkgrey
 
 " make arrows keys not work in order to learn hjkl movement
 nnoremap <up> <nop>
@@ -77,8 +80,6 @@ if has('multi_byte')
     set listchars=tab:▸\ ,trail:·
     set list
 endif
-
-" let g:airline_powerline_fonts = 1
 
 " F2 to trim trailing whitespace
 " https://stackoverflow.com/questions/24148991/vim-is-inserting-q-when-i-hit-f2
