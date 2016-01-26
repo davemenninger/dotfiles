@@ -16,6 +16,9 @@ filetype plugin indent on
 
 au BufRead,BufNewFile *.md set filetype=markdown
 
+set backup
+set noswapfile
+
 set shell=bash
 set modelines=0
 set diffopt=filler,vertical
