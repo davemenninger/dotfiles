@@ -88,3 +88,5 @@ endif
 " https://stackoverflow.com/questions/24148991/vim-is-inserting-q-when-i-hit-f2
 map <Esc>OQ :%s/\s\+$//g
 map <F2> :%s/\s\+$//g
+
+let NERDSpaceDelims=1
