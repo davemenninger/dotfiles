@@ -90,3 +90,5 @@ map <Esc>OQ :%s/\s\+$//g
 map <F2> :%s/\s\+$//g
 
 let NERDSpaceDelims=1
+
+autocmd VimEnter * RainbowParenthesesToggleAll
