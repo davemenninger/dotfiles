@@ -110,3 +110,5 @@ end
 function mutt
     bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv;
 end
+
+[ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
