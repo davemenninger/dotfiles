@@ -34,3 +34,6 @@
 [submodule ".vim/bundle/nerdcommenter"]
 	path = .vim/bundle/nerdcommenter
 	url = https://github.com/scrooloose/nerdcommenter.git
+[submodule ".vim/bundle/delimitMate.vim"]
+	path = .vim/bundle/delimitMate.vim
+	url = https://github.com/vim-scripts/delimitMate.vim.git
