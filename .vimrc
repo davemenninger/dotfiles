@@ -11,6 +11,7 @@ syntax on
 
 set background=dark
 colorscheme slate
+silent! colorscheme gruvbox
 
 filetype plugin indent on
 
