@@ -112,3 +112,5 @@ function mutt
 end
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
+
+set -gx TERM screen-256color-bce;
