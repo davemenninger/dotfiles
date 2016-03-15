@@ -8,4 +8,4 @@ Finally hopping on the dotfiles bandwagon...
 
 * tpope: https://github.com/tpope/vim-pathogen , https://github.com/tpope/vim-sensible , https://github.com/tpope/vim-sleuth
 * http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
-
+* http://vimcasts.org/episodes/synchronizing-plugins-with-git-submodules-and-pathogen/
