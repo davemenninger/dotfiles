@@ -93,3 +93,5 @@ map <F2> :%s/\s\+$//g
 let NERDSpaceDelims=1
 
 autocmd VimEnter * RainbowParenthesesToggleAll
+
+nnoremap <F5> :GundoToggle<CR>
