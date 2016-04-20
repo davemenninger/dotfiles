@@ -40,3 +40,15 @@ then
     mv ~/.config/fish/config.fish ~/dotfiles_old/
 fi
 ln -s $dir/config.fish ~/.config/fish/config.fish
+
+if [ -f ~/.config/fish/functions/fin.fish ]
+then
+    mv ~/.config/fish/functions/fin.fish ~/dotfiles_old/
+fi
+ln -s $dir/fin/fin.fish ~/.config/fish/functions/fin.fish
+
+if [ -f ~/.config/fish/bundle ]
+then
+    mv ~/.config/fish/bundle ~/dotfiles_old/
+fi
+ln -s $dir/bundle ~/.config/fish/bundle
