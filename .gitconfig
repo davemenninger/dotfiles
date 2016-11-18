@@ -4,7 +4,7 @@
 	editor = vim
 	trustctime = false
 	filemode = false
-	excludesfile = /Users/dmenninger/.gitignore_global
+	excludesfile = ~/.gitignore_global
 [color]
 	diff = auto
 	ui = true
@@ -25,6 +25,7 @@
 	unstage = reset HEAD --
 	dc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	todo = !ag TODO
 [include]
 	path = ~/.gitconfig_local
 [push]
