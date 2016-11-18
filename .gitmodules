@@ -43,3 +43,9 @@
 [submodule ".vim/bundle/gundo.vim"]
 	path = .vim/bundle/gundo.vim
 	url = https://github.com/sjl/gundo.vim.git
+[submodule ".vim/bundle/vim-surround"]
+	path = .vim/bundle/vim-surround
+	url = https://github.com/tpope/vim-surround.git
+[submodule "fin"]
+	path = fin
+	url = https://github.com/fisherman/fin.git

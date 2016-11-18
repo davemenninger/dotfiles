@@ -26,6 +26,8 @@
 	dc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
 	todo = !ag TODO
+	bv = branch -v
+	rv = remote -v
 [include]
 	path = ~/.gitconfig_local
 [push]
