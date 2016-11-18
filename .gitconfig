@@ -13,21 +13,22 @@
 [credential]
 	helper = cache
 [alias]
+	br = branch
+	bv = branch -v
+	ci = commit
+	cl = clone
+	co = checkout
+	cp = cherry-pick
+	dc = diff --cached
 	ec = config --global -e
-	st = status
 	hist = log --pretty=format:'%Cred%h%Creset %C(bold blue)%ad%Creset | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
 	last = log -1 --stat
-	cp = cherry-pick
-	co = checkout
-	cl = clone
-	ci = commit
-	br = branch
-	unstage = reset HEAD --
-	dc = diff --cached
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
-	todo = !ag TODO
-	bv = branch -v
 	rv = remote -v
+	st = status
+	todo2 = !git grep TODO
+	todo = !ag TODO
+	unstage = reset HEAD --
 [include]
 	path = ~/.gitconfig_local
 [push]
