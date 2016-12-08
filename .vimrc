@@ -11,7 +11,7 @@ let g:syntastic_auto_loc_list = 1
 let g:syntastic_check_on_wq = 0
 let g:syntastic_enable_perl_checker = 1
 let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
-let g:syntastic_perl_lib_path = [ './lib', './lib/auto', './local/lib/perl5/' ]
+let g:syntastic_perl_lib_path = [ './lib', './lib/auto', './syntastic_link/lib', './local/lib/perl5/' ]
 let g:syntastic_perl_perlcritic_thres = 2
 
 let g:airline_powerline_fonts = 1
@@ -28,8 +28,11 @@ filetype plugin indent on
 
 au BufRead,BufNewFile *.md set filetype=markdown
 
-set backup
-set noswapfile
+set backupdir=~/.vim/backup     " get backups outta here
+set directory=~/.vim/swap       " get swapfiles outta here
+set writebackup                 " temp backup during write
+set undodir=~/.vim/undo         " persistent undo storage
+set undofile                    " persistent undo on"
 
 set shell=bash
 set modelines=0

@@ -29,10 +29,6 @@
 	todo2 = !git grep TODO
 	todo = !ag TODO
 	unstage = reset HEAD --
-	bv = branch -v
-	rv = remote -v
-[include]
-	path = ~/.gitconfig_local
 [push]
 	default = matching
 [mergetool]
