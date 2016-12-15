@@ -115,3 +115,7 @@ end
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 
 set -gx TERM screen-256color-bce;
+
+function vs
+    vagrant ssh;
+end
