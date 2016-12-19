@@ -49,3 +49,6 @@
 [submodule "fin"]
 	path = fin
 	url = https://github.com/fisherman/fin.git
+[submodule ".vim/bundle/vim-gitgutter"]
+	path = .vim/bundle/vim-gitgutter
+	url = https://github.com/airblade/vim-gitgutter.git
