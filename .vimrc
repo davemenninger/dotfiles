@@ -14,7 +14,7 @@ let g:syntastic_perl_checkers = ['perl', 'perlcritic', 'podchecker']
 let g:syntastic_perl_lib_path = [ './lib', './lib/auto', './syntastic_link/lib', './local/lib/perl5/' ]
 let g:syntastic_perl_perlcritic_thres = 2
 
-" let g:syntastic_ruby_checkers = ['rubocop']
+let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:airline_powerline_fonts = 1
 
