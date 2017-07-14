@@ -119,3 +119,24 @@ set -gx TERM screen-256color-bce;
 function vs
     vagrant ssh;
 end
+
+
+# rbenv
+set -gx PATH "$HOME/.rbenv/shims" $PATH
+set -gx RBENV_SHELL fish
+set RBENV_VERSION (rbenv --version | sed "s/rbenv //")
+# echo $RBENV_VERSION
+[ -f "/usr/local/Cellar/rbenv/$RBENV_VERSION/libexec/../completions/rbenv.fish" ]; and . "/usr/local/Cellar/rbenv/$RBENV_VERSION/libexec/../completions/rbenv.fish"
+[ -f '/usr/lib/rbenv/completions/rbenv.fish' ]; and . '/usr/lib/rbenv/completions/rbenv.fish'
+command rbenv rehash 2>/dev/null
+function rbenv
+  set command $argv[1]
+  set -e argv[1]
+
+  switch "$command"
+  case rehash shell
+    source (rbenv "sh-$command" $argv|psub)
+  case '*'
+    command rbenv "$command" $argv
+  end
+end
