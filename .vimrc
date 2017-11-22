@@ -89,6 +89,8 @@ set foldenable
 set foldmethod=indent
 nnoremap <space> za
 
+nnoremap <leader>tb :TagbarToggle<cr>
+
 set viminfo='25,\"50,n~/.viminfo
 if has("autocmd")
   au BufReadPost * if line("'\"") > 1 && line("'\"") <= line("$") | exe "normal! g'\"" | endif
