@@ -29,6 +29,7 @@
 	todo2 = !git grep TODO
 	todo = !ag TODO
 	unstage = reset HEAD --
+	ctags = !.git/hooks/ctags ; http://tbaggery.com/2011/08/08/effortless-ctags-with-git.html
 [push]
 	default = matching
 [mergetool]
@@ -38,3 +39,5 @@
 	trustexitcode = false
 [include]
 	path = ~/.gitconfiglocal
+[init]
+	templatedir = ~/.git_template

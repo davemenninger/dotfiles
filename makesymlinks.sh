@@ -9,7 +9,7 @@
 
 dir=~/dotfiles                    # dotfiles directory
 olddir=~/dotfiles_old             # old dotfiles backup directory
-files=".vim .vimrc .gitconfig .gitignore .tmux.conf .rubocop.yml"    # list of files/folders to symlink in homedir
+files=".perlcriticrc .vim .vimrc .gitconfig .gitignore .git_template .tmux.conf .rubocop.yml"    # list of files/folders to symlink in homedir
 
 ##########
 
@@ -20,7 +20,7 @@ echo "...done"
 
 # change to the dotfiles directory
 echo "Changing to the $dir directory"
-cd $dir
+cd $dir || exit
 echo "...done"
 
 # move any existing dotfiles in homedir to dotfiles_old directory, then create symlinks

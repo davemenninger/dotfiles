@@ -120,7 +120,6 @@ function vs
     vagrant ssh;
 end
 
-
 # rbenv
 if which rbenv >/dev/null
   set -gx PATH "$HOME/.rbenv/shims" $PATH
