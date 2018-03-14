@@ -18,6 +18,9 @@ let g:syntastic_ruby_checkers = ['rubocop']
 
 let g:airline_powerline_fonts = 1
 
+" Enable the list of buffers
+let g:airline#extensions#tabline#enabled = 1
+
 execute pathogen#infect()
 
 syntax on
