@@ -51,6 +51,8 @@ set expandtab " all new tabs should use spaces
 
 set splitbelow
 set splitright
+" automatically rebalance windows on vim resize
+autocmd VimResized * :wincmd =
 
 set ignorecase
 set smartcase
