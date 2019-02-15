@@ -113,6 +113,8 @@ end
 
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
+[ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
+[ -f ~/perl5/perlbrew/etc/perlbrew.fish ]; and . ~/perl5/perlbrew/etc/perlbrew.fish
 
 set -gx TERM screen-256color-bce;
 
