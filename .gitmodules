@@ -22,9 +22,6 @@
 [submodule ".vim/bundle/syntastic"]
 	path = .vim/bundle/syntastic
 	url = https://github.com/scrooloose/syntastic.git
-[submodule ".vim/bundle/vim-chef"]
-	path = .vim/bundle/vim-chef
-	url = git://github.com/dougireton/vim-chef.git
 [submodule "fonts"]
 	path = fonts
 	url = https://github.com/powerline/fonts.git
