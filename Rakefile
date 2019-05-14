@@ -13,5 +13,5 @@ def update_git_submodules
   puts 'updating git-submodules'
   system 'git submodule init'
   system 'git submodule update'
-  # system 'git submodule -q foreach git pull -q origin master'
+  system 'git submodule -q foreach git pull -q origin master'
 end
