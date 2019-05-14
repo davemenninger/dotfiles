@@ -10,15 +10,15 @@ desc "install the dot files into user's home directory"
 task :install do
   files = %w[vimrc rubocop.yml]
   files.each do |file|
-    system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ /\//
-    file_name = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}")
+    system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ %r{/\/}
+    file_name = File.join(ENV['HOME'], ".#{file}")
     if File.exist?(file_name)
       if File.identical? file, file_name
-        puts "identical ~/.#{file.sub(/\.erb$/, '')}"
+        puts "identical ~/.#{file}"
       elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file.sub(/\.erb$/, '')}? [ynaq] "
+        print "overwrite ~/.#{file}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -28,7 +28,7 @@ task :install do
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file.sub(/\.erb$/, '')}"
+          puts "skipping ~/.#{file}"
         end
       end
     else
@@ -38,15 +38,8 @@ task :install do
 end
 
 def link_file(file)
-  if file =~ /.erb$/
-    puts "generating ~/.#{file.sub(/\.erb$/, '')}"
-    File.open(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"), 'w') do |new_file|
-      new_file.write ERB.new(File.read(file)).result(binding)
-    end
-  else
-    puts "linking ~/.#{file}"
-    system %(ln -s "$PWD/#{file}" "$HOME/.#{file}")
-  end
+  puts "linking ~/.#{file}"
+  system %(ln -s "$PWD/#{file}" "$HOME/.#{file}")
 end
 
 desc 'init and update the git submodules'
