@@ -11,8 +11,9 @@ task :install do
   files = %w[vimrc rubocop.yml]
   files.each do |file|
     system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ /\//
-    if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
-      if File.identical? file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}")
+    file_name = File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}")
+    if File.exist?(file_name)
+      if File.identical? file, file_name
         puts "identical ~/.#{file.sub(/\.erb$/, '')}"
       elsif replace_all
         replace_file(file)
