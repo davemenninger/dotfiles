@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 # https://github.com/phstc/dotfiles/blob/master/Rakefile
 
 require 'rake'
@@ -6,9 +8,9 @@ task default: [:install]
 
 desc "install the dot files into user's home directory"
 task :install do
-  files = %w[ vimrc rubocop.yml ]
+  files = %w[vimrc rubocop.yml]
   files.each do |file|
-    system %Q{mkdir -p "$HOME/.#{File.dirname(file)}"} if file =~ /\//
+    system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ /\//
     if File.exist?(File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}"))
       if File.identical? file, File.join(ENV['HOME'], ".#{file.sub(/\.erb$/, '')}")
         puts "identical ~/.#{file.sub(/\.erb$/, '')}"
@@ -42,11 +44,11 @@ def link_file(file)
     end
   else
     puts "linking ~/.#{file}"
-    system %Q{ln -s "$PWD/#{file}" "$HOME/.#{file}"}
+    system %(ln -s "$PWD/#{file}" "$HOME/.#{file}")
   end
 end
 
-desc "init and update the git submodules"
+desc 'init and update the git submodules'
 task :modules do
   update_git_submodules
 end
