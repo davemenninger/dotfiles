@@ -30,13 +30,20 @@ Plug 'kien/ctrlp.vim'
 
 Plug 'jeetsukumaran/vim-buffergator'
 
+Plug 'airblade/vim-gitgutter'
+
+Plug 'tpope/vim-fugitive'
+
+Plug 'bling/vim-airline'
+
 call plug#end()
 
 " When writing a buffer (no delay).
 call neomake#configure#automake('w')
 
-set mouse =""
+command MixFormat silent %!mix format -
 
+set mouse =""
 
 set background=dark
 syntax enable
@@ -51,6 +58,7 @@ set expandtab
 " - Indent by 2 spaces by default
 set shiftwidth=2
 
+set diffopt=filler,vertical
 " set number " line numbering
 
 " Highlight search results
@@ -64,6 +72,15 @@ set smartcase
 " Stop highlighting on Enter
 map <CR> :noh<CR>
 
+" show tabs and trailing
+if has('multi_byte')
+    scriptencoding utf-8
+    set listchars=tab:▸\ ,trail:·
+    set list
+    if !has("win32")
+        set showbreak=↪           " The character to put to show a line has been wrapped
+    end
+  endif
 
 " Set the title of the iterm tab
 set title
