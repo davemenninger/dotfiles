@@ -1,5 +1,7 @@
 [user]
 	name = Dave Menninger
+[github]
+	user = davemenninger
 [core]
 	editor = vim
 	trustctime = false
@@ -24,11 +26,13 @@
 	hist = log --pretty=format:'%Cred%h%Creset %C(bold blue)%ad%Creset | %s%C(yellow)%d%Creset %Cgreen[%an]%Creset' --graph --date=short
 	last = log -1 --stat
 	lg = log --graph --pretty=format:'%Cred%h%Creset -%C(yellow)%d%Creset %s %Cgreen(%cr) %Cblue<%an>%Creset' --abbrev-commit --date=relative --all
+	push-branch = push -u origin HEAD
 	rv = remote -v
 	st = status
+	todo = !rg TODO
 	todo2 = !git grep TODO
-	todo = !ag TODO
 	unstage = reset HEAD --
+	churn = !git log --format=format: --name-only --since=12.month  | egrep -v '^$' | sort | uniq -c | sort -r | head -50
 [push]
 	default = matching
 [mergetool]
