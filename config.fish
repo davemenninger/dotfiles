@@ -1,6 +1,5 @@
 set SHELL /usr/local/bin/fish
 set PATH $PATH ~/bin
-# source ~/perl5/perlbrew/etc/perlbrew.fish
 
 # Colors
 set normal (set_color normal)
@@ -148,3 +147,20 @@ end
 
 test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
 
+source /usr/local/opt/asdf/asdf.fish
+set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+
+# enable history in IEx
+set -g -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
+
+# tabtab source for yo package
+# uninstall by removing these lines or running `tabtab uninstall yo`
+[ -f /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish ]; and . /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish
+
+
+# https://github.com/dbernheisel/expokesay
+[ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
+set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
+set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
