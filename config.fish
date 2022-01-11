@@ -1,6 +1,6 @@
 set SHELL /usr/local/bin/fish
 set PATH $PATH ~/bin
-source ~/perl5/perlbrew/etc/perlbrew.fish
+# source ~/perl5/perlbrew/etc/perlbrew.fish
 
 # Colors
 set normal (set_color normal)
@@ -115,6 +115,7 @@ end
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
 [ -f ~/perl5/perlbrew/etc/perlbrew.fish ]; and . ~/perl5/perlbrew/etc/perlbrew.fish
+source /usr/local/opt/asdf/libexec/asdf.fish
 
 set -gx TERM screen-256color-bce;
 
@@ -144,3 +145,6 @@ if which rbenv >/dev/null
     end
   end
 end
+
+test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+
