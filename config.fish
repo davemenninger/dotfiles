@@ -157,10 +157,15 @@ set -g -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_b
 # uninstall by removing these lines or running `tabtab uninstall yo`
 [ -f /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish ]; and . /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish
 
+function fish_greeting
+  # https://github.com/dbernheisel/expokesay
+  [ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
+  set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
+  set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
+  set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
+  set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
 
-# https://github.com/dbernheisel/expokesay
-[ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
-set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
-set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
+  [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
+end
+
+
