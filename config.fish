@@ -1,4 +1,3 @@
-set SHELL /usr/local/bin/fish
 set PATH $PATH ~/bin
 
 # Colors
@@ -106,20 +105,15 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
 end
 
-function mutt
-    bash --login -c 'cd ~/Desktop; /usr/local/bin/mutt' $argv;
-end
-
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
 [ -f ~/perl5/perlbrew/etc/perlbrew.fish ]; and . ~/perl5/perlbrew/etc/perlbrew.fish
-source /usr/local/opt/asdf/libexec/asdf.fish
 
 set -gx TERM screen-256color-bce;
 
 function vs
-    vagrant ssh;
+  vagrant ssh;
 end
 
 
@@ -145,11 +139,6 @@ if which rbenv >/dev/null
   end
 end
 
-test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-
-source /usr/local/opt/asdf/asdf.fish
-set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
-
 # enable history in IEx
 set -g -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_bytes 1024000"
 
@@ -160,12 +149,22 @@ set -g -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_b
 function fish_greeting
   # https://github.com/dbernheisel/expokesay
   [ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
-  set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
-  set -g fish_user_paths "/usr/local/opt/postgresql@9.5/bin" $fish_user_paths
-  set -g fish_user_paths "/usr/local/opt/python@3.8/bin" $fish_user_paths
-  set -g fish_user_paths "/usr/local/opt/mysql-client/bin" $fish_user_paths
-
   [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
 end
 
 
+# TODO OS-specific stuff
+switch (uname)
+  case Linux
+    echo Hi Tux!
+  case Darwin
+    echo Hi Hexley!
+    set PATH $PATH /usr/local/bin
+    set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
+    test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
+    source /usr/local/opt/asdf/asdf.fish
+    source /usr/local/opt/asdf/libexec/asdf.fish
+    set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
+  case '*'
+    echo Unknown uname
+end
