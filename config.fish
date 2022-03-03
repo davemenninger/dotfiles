@@ -152,6 +152,19 @@ function fish_greeting
   [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
 end
 
+function todo
+  set todo_path ~/Dropbox/todo/todo.md
+  switch $argv[1]
+    case ''
+      nvim "$todo_path"
+    case '*'
+      set tag (string upper $argv[1])
+      echo "$tag"
+      cat "$todo_path" | grep "$tag"
+      true
+  end
+end
+
 
 # TODO OS-specific stuff
 switch (uname)
