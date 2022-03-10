@@ -158,7 +158,6 @@ switch (uname)
   case Linux
     echo Hi Tux!
   case Darwin
-    echo Hi Hexley!
     set PATH $PATH /usr/local/bin
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
     test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
