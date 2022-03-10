@@ -2,3 +2,4 @@
 *~
 .kitchen/
 .vagrant/
+.DS_Store
