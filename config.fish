@@ -152,15 +152,19 @@ function fish_greeting
   [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
 end
 
+if which nvim >/dev/null
+  set -gx EDITOR nvim
+end
+
 function ec_fish
-  nvim ~/.config/fish/config.fish
+  $EDITOR ~/.config/fish/config.fish
 end
 
 function todo
   set todo_path ~/Dropbox/todo/todo.md
   switch $argv[1]
     case ''
-      nvim "$todo_path"
+      $EDITOR "$todo_path"
     case 'add'
       set item $argv[2..-1]
       echo "$item" >> "$todo_path"
@@ -175,7 +179,7 @@ end
 # TODO OS-specific stuff
 switch (uname)
   case Linux
-    echo Hi Tux!
+    source {$HOME}/.asdf/asdf.fish
   case Darwin
     set PATH $PATH /usr/local/bin
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
