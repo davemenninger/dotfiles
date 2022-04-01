@@ -1,32 +1,16 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" Plugins go here.  Example:
-" Plug 'foo/bar'
-
-Plug 'Shougo/deoplete.nvim', { 'do': ':UpdateRemotePlugins' }
-  let g:deoplete#enable_at_startup = 1
-  " use tab for completion
-  " inoremap <expr><tab> pumvisible() ? "\<c-n>" : "\<tab>"
-
 " Polyglot loads language support on demand!
-Plug 'sheerun/vim-polyglot'
+" Plug 'sheerun/vim-polyglot'
+
+Plug 'elixir-editors/vim-elixir'
+
 " theme
 Plug 'tomasr/molokai'
 
-Plug 'neomake/neomake'
-  " Run Neomake when I save any buffer
-  augroup localneomake
-    autocmd! BufWritePost * Neomake
-  augroup end
-  " Don't tell me to use smartqutoes in markdown ok?
-  " let g:neomake_markdown_enabled_markers = [ ]
-  let g:neomake_open_list = 2
+Plug 'ctrlpvim/ctrlp.vim'
 
-  let g:neomake_elixir_enabled_makers = ['mix', 'credo' ] ", 'dogma']
-
-Plug 'slashmili/alchemist.vim'
-
-Plug 'kien/ctrlp.vim'
+Plug 'luochen1990/rainbow'
 
 Plug 'jeetsukumaran/vim-buffergator'
 
@@ -36,14 +20,26 @@ Plug 'tpope/vim-fugitive'
 
 Plug 'bling/vim-airline'
 
+Plug 'neoclide/coc.nvim', {'branch': 'release'}
+
 call plug#end()
 
-" When writing a buffer (no delay).
-call neomake#configure#automake('w')
+let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic']
+
+let g:rainbow_active = 1 "set to 0 if you want to enable it later via :RainbowToggle
 
 command MixFormat silent %!mix format -
 
 set mouse =""
+set cursorline
+set cursorcolumn
+set colorcolumn=80
+
+" folding
+set foldenable
+"set foldnestmax=10
+set foldmethod=indent
+nnoremap <space> za
 
 set background=dark
 syntax enable
@@ -72,6 +68,8 @@ set smartcase
 " Stop highlighting on Enter
 map <CR> :noh<CR>
 
+let g:ctrlp_user_command = ['.git', 'cd %s && git ls-files -co --exclude-standard']
+
 " show tabs and trailing
 if has('multi_byte')
     scriptencoding utf-8
@@ -84,3 +82,46 @@ if has('multi_byte')
 
 " Set the title of the iterm tab
 set title
+
+" edit my .vimrc
+nnoremap <leader>ev :vsplit $XDG_CONFIG_HOME/nvim/init.vim<cr>
+nnoremap <leader>sv :source $XDG_CONFIG_HOME/nvim/init.vim<cr>
+
+" make arrows keys not work in order to learn hjkl movement
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <up> <nop>
+nnoremap <down> <nop>
+nnoremap <left> <nop>
+nnoremap <right> <nop>
+inoremap <up> <nop>
+inoremap <down> <nop>
+inoremap <left> <nop>
+inoremap <right> <nop>
+" move across a wrapped line
+nnoremap j gj
+nnoremap k gk
+
+" Use `[g` and `]g` to navigate diagnostics
+" Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
+nmap <silent> [g <Plug>(coc-diagnostic-prev)
+nmap <silent> ]g <Plug>(coc-diagnostic-next)
+
+" GoTo code navigation.
+nmap <silent> gd <Plug>(coc-definition)
+nmap <silent> gy <Plug>(coc-type-definition)
+nmap <silent> gi <Plug>(coc-implementation)
+nmap <silent> gr <Plug>(coc-references)
+
+" Use K to show documentation in preview window.
+nnoremap <silent> K :call <SID>show_documentation()<CR>
+
+function! s:show_documentation()
+  if (index(['vim','help'], &filetype) >= 0)
+    execute 'h '.expand('<cword>')
+  elseif (coc#rpc#ready())
+    call CocActionAsync('doHover')
+  else
+    execute '!' . &keywordprg . " " . expand('<cword>')
+  endif
+endfunction
