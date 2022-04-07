@@ -147,9 +147,13 @@ set -g -x ERL_AFLAGS "-kernel shell_history enabled -kernel shell_history_file_b
 [ -f /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish ]; and . /usr/local/lib/node_modules/yo/node_modules/tabtab/.completions/yo.fish
 
 function fish_greeting
+  random_pokemon
+  [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
+end
+
+function random_pokemon
   # https://github.com/dbernheisel/expokesay
   [ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
-  [ -f ~/Dropbox/todo/todo.md ]; and cat ~/Dropbox/todo/todo.md | sort -R | head -3;
 end
 
 if which nvim >/dev/null
