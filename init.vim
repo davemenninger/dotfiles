@@ -1,12 +1,15 @@
 call plug#begin('~/.config/nvim/plugged')
 
 " Polyglot loads language support on demand!
-" Plug 'sheerun/vim-polyglot'
+Plug 'sheerun/vim-polyglot'
 
 Plug 'elixir-editors/vim-elixir'
 
 " theme
 Plug 'tomasr/molokai'
+" Plug 'joshdick/onedark.vim'
+Plug 'navarasu/onedark.nvim'
+
 
 Plug 'ctrlpvim/ctrlp.vim'
 
@@ -43,7 +46,10 @@ nnoremap <space> za
 
 set background=dark
 syntax enable
-colorscheme molokai
+" colorscheme molokai
+
+let g:onedark_config = { 'style': 'deep' }
+colorscheme onedark
 
 " Sane tabs
 " - Two spaces wide
@@ -125,3 +131,5 @@ function! s:show_documentation()
     execute '!' . &keywordprg . " " . expand('<cword>')
   endif
 endfunction
+
+nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
