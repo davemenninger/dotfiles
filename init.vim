@@ -133,3 +133,17 @@ function! s:show_documentation()
 endfunction
 
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
+
+if !exists("g:DaveJournalStartCommand")
+  let g:dave_journal_start_command = system('which dave_journal_start.bash')
+  let g:dave_journal_start_command = expand('%:p:h') . '/dave_journal_start.bash'
+endif
+
+function! DaveJournalStart()
+  " this is a fish function
+  :read !journal_yaml
+  " this is a fish function
+  :read !journal_recur
+endfunction
+
+command! -nargs=* JournalStart call DaveJournalStart()
