@@ -3,7 +3,7 @@
 [github]
 	user = davemenninger
 [core]
-	editor = vim
+	editor = nvim
 	trustctime = false
 	filemode = false
 	excludesfile = ~/.gitignore_global
