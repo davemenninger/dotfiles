@@ -1,31 +1,33 @@
 call plug#begin('~/.config/nvim/plugged')
 
-" Polyglot loads language support on demand!
-Plug 'sheerun/vim-polyglot'
 
-Plug 'elixir-editors/vim-elixir'
-
-" theme
-Plug 'tomasr/molokai'
 " Plug 'joshdick/onedark.vim'
-Plug 'navarasu/onedark.nvim'
-
-
-Plug 'ctrlpvim/ctrlp.vim'
-
-Plug 'luochen1990/rainbow'
-
-Plug 'jeetsukumaran/vim-buffergator'
-
 Plug 'airblade/vim-gitgutter'
-
+Plug 'bling/vim-airline'
+Plug 'ctrlpvim/ctrlp.vim'
+Plug 'jeetsukumaran/vim-buffergator'
+Plug 'kyazdani42/nvim-web-devicons'
+Plug 'luochen1990/rainbow'
+Plug 'navarasu/onedark.nvim'
+Plug 'ryanoasis/vim-devicons'
+Plug 'tomasr/molokai'
 Plug 'tpope/vim-fugitive'
 
-Plug 'bling/vim-airline'
-
+" this is a mess:
+" Plug 'elixir-editors/vim-elixir'
+" Plug 'elixir-lsp/elixir-ls'
+" Plug 'folke/trouble.nvim'
+" Plug 'neovim/nvim-lspconfig'
+" Plug 'nvim-lua/plenary.nvim'
+" Plug 'mhanberg/elixir.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
+Plug 'sheerun/vim-polyglot'
 
 call plug#end()
+
+" lua require("trouble").setup {}
+
+" lua require("elixir").setup()
 
 let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic']
 
@@ -133,3 +135,10 @@ function! s:show_documentation()
 endfunction
 
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
+
+
+
+
+""""""""""""""""""""""""""""
+" https://bernheisel.com/blog/vim-elixir-ls-plug
+""""""""""""""""""""""""""""
