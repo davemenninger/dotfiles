@@ -108,13 +108,14 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" add spellchecking in commits
 augroup commits
   autocmd!
 
   if has('spell')
     au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
   endif
-  au BufNewFile,BufRead COMMIT_EDITMSG call feedkeys('ggi', 't')
+  " au BufNewFile,BufRead COMMIT_EDITMSG call feedkeys('ggi', 't')
 augroup END
 
 " Use `[g` and `]g` to navigate diagnostics
