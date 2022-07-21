@@ -180,6 +180,50 @@ function todo
   end
 end
 
+
+function journal
+  set today (date -Idate)
+  set journal_path ~/Dropbox/todo/journal/{$today}.md
+  echo "$journal_path"
+  $EDITOR "$journal_path"
+end
+
+function journal_yaml
+  set today (date -Idate)
+  echo "---"
+  echo "date: $today"
+  echo "---"
+end
+
+function journal_recur
+  echo "stuff..."
+end
+
+function recur
+  set recur_path ~/Dropbox/todo/recur.md
+  switch $argv[1]
+    case ''
+      $EDITOR "$recur_path"
+    case 'daily'
+      set item $argv[2..-1]
+      echo "D - $item" >> "$recur_path"
+    case 'weekly'
+      set item $argv[2..-1]
+      echo "W - $item" >> "$recur_path"
+    case 'monthly'
+      set item $argv[2..-1]
+      echo "M - $item" >> "$recur_path"
+    case 'yearly'
+      set item $argv[2..-1]
+      echo "Y - $item" >> "$recur_path"
+    case '*'
+      set tag "$argv[1]"
+      echo "$tag"
+      cat "$recur_path" | grep -i "$tag"
+      true
+  end
+end
+
 # TODO OS-specific stuff
 switch (uname)
   case Linux

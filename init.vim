@@ -110,6 +110,16 @@ inoremap <right> <nop>
 nnoremap j gj
 nnoremap k gk
 
+" add spellchecking in commits
+augroup commits
+  autocmd!
+
+  if has('spell')
+    au BufNewFile,BufRead COMMIT_EDITMSG setlocal spell
+  endif
+  " au BufNewFile,BufRead COMMIT_EDITMSG call feedkeys('ggi', 't')
+augroup END
+
 " Use `[g` and `]g` to navigate diagnostics
 " Use `:CocDiagnostics` to get all diagnostics of current buffer in location list.
 nmap <silent> [g <Plug>(coc-diagnostic-prev)
@@ -137,8 +147,20 @@ endfunction
 nnoremap <silent> <leader>h :call CocActionAsync('doHover')<cr>
 
 
-
-
 """"""""""""""""""""""""""""
 " https://bernheisel.com/blog/vim-elixir-ls-plug
 """"""""""""""""""""""""""""
+
+if !exists("g:DaveJournalStartCommand")
+  let g:dave_journal_start_command = system('which dave_journal_start.bash')
+  let g:dave_journal_start_command = expand('%:p:h') . '/dave_journal_start.bash'
+endif
+
+function! DaveJournalStart()
+  " this is a fish function
+  :read !journal_yaml
+  " this is a fish function
+  :read !journal_recur
+endfunction
+
+command! -nargs=* JournalStart call DaveJournalStart()
