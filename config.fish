@@ -228,6 +228,8 @@ end
 switch (uname)
   case Linux
     source {$HOME}/.asdf/asdf.fish
+    alias pbcopy 'xclip -selection clipboard'
+    alias pbpaste 'xclip -selection clipboard -o'
   case Darwin
     set PATH $PATH /usr/local/bin
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
@@ -238,3 +240,5 @@ switch (uname)
   case '*'
     echo Unknown uname
 end
+
+[ -f ~/dotfiles/simplecast.fish ]; and . ~/dotfiles/simplecast.fish
