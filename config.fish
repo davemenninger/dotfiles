@@ -242,3 +242,4 @@ switch (uname)
   case '*'
     echo Unknown uname
 end
+eval "$(/opt/homebrew/bin/brew shellenv)"
