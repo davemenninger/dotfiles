@@ -41,10 +41,9 @@ vim.opt.wrapmargin = 8
 vim.opt.wrapscan = true
 
 vim.g['rainbow_active'] = 1
-vim.g['shades_of_purple_airline'] = 1
-vim.g['airline_theme'] = 'shades_of_purple'
+-- vim.g['airline_theme'] = 'random'
 
-vim.cmd("colorscheme srcery")
+vim.cmd("colorscheme starry")
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -74,24 +73,61 @@ require('packer').startup(function(use)
   use 'wbthomason/packer.nvim'
 
   --- Colors
+  use '2nthony/vitesse.nvim'
+  use 'Mofiqul/adwaita.nvim'
+  use 'NTBBloodbath/doom-one.nvim'
   use 'Rigellute/shades-of-purple.vim'
+  use 'Th3Whit3Wolf/onebuddy'
+  use 'Th3Whit3Wolf/space-nvim'
   use 'altercation/vim-colors-solarized'
   use 'bitfield/vim-gitgo'
+  use 'bkegley/gloombuddy'
+  use 'bluz71/vim-nightfly-colors'
   use 'catppuccin/nvim'
+  use 'cpea2506/one_monokai.nvim'
   use 'dracula/vim'
   use 'folke/tokyonight.nvim'
   use 'joshdick/onedark.vim'
+  use 'judaew/ronny.nvim'
+  use 'marko-cerovac/material.nvim'
+  use 'maxmx03/FluoroMachine.nvim'
+  use 'mhartington/oceanic-next'
   use 'morhetz/gruvbox'
   use 'nanotech/jellybeans.vim'
   use 'navarasu/onedark.nvim'
   use 'neanias/everforest-nvim'
+  use 'nxvu699134/vn-night.nvim'
+  use 'nyngwang/nvimgelion'
+  use 'ofirgall/ofirkai.nvim'
+  use 'olimorris/onedarkpro.nvim'
+  use 'oxfist/night-owl.nvim'
   use 'pineapplegiant/spaceduck'
+  use 'polirritmico/monokai-nightasty.nvim'
+  use 'ray-x/aurora'
   use 'rebelot/kanagawa.nvim'
+  use 'sainnhe/sonokai'
   use 'savq/melange-nvim'
+  use 'sekke276/dark_flat.nvim'
   use 'srcery-colors/srcery-vim'
   use 'talha-akram/noctis.nvim'
   use 'theacodes/witchhazel'
+  use 'titanzero/zephyrium'
   use 'tomasr/molokai'
+  use 'yonlu/omni.vim'
+  use 'zootedb0t/citruszest.nvim'
+  use { 'Everblush/nvim', as = 'everblush' }
+  use({ 'rose-pine/neovim', as = 'rose-pine' })
+  use({
+    'glepnir/zephyr-nvim',
+    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
+  })
+  use {
+    'rockyzhang24/arctic.nvim',
+    requires = { 'rktjmp/lush.nvim' }
+  }
+  use { 'ray-x/starry.nvim', setup = function()
+    vim.g.starry_italic_comments = true
+  end }
 
   --- General
   use 'airblade/vim-gitgutter'
@@ -103,6 +139,8 @@ require('packer').startup(function(use)
   use 'ryanoasis/vim-devicons'
   use 'tpope/vim-fugitive'
   use 'vim-test/vim-test'
+
+  use 'nvim-treesitter/nvim-treesitter'
 
   use {
     'folke/trouble.nvim',
@@ -244,13 +282,15 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set('i', '<down>', '<nop>')
   vim.keymap.set('i', '<left>', '<nop>')
   vim.keymap.set('i', '<right>', '<nop>')
+
+  local builtin = require('telescope.builtin')
+  vim.keymap.set('n', '<c-p>', builtin.find_files, {})
+  vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+  vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+  vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+  vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 end)
 
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
@@ -265,6 +305,24 @@ telescope.setup {
 }
 
 lsp.setup()
+
+
+require 'nvim-treesitter.configs'.setup {
+  -- A list of parser names, or "all" (the five listed parsers should always be installed)
+  ensure_installed = { "go", "c", "lua", "vim", "vimdoc", "query" },
+
+  -- Install parsers synchronously (only applied to `ensure_installed`)
+  sync_install = false,
+
+  -- Automatically install missing parsers when entering buffer
+  -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
+  auto_install = false,
+
+
+  highlight = {
+    enable = true,
+  },
+}
 
 vim.diagnostic.config({
   virtual_text = true
