@@ -154,7 +154,9 @@ end
 
 function random_pokemon
   # https://github.com/dbernheisel/expokesay
-  [ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
+  [ -d "$HOME/.pokesay" ]; and set p (find "$HOME/.pokesay" -type f | shuf -n 1)
+  [ -d "$HOME/.pokesay" ]; and sh $p
+  [ -d "$HOME/.pokesay" ]; and echo $(echo $p | string split '/' --fields 5 | string split '.' --fields 1)
 end
 
 if which nvim >/dev/null
