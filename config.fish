@@ -233,8 +233,9 @@ switch (uname)
     set PATH $PATH /usr/local/bin
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
     test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-    source /usr/local/opt/asdf/asdf.fish
-    source /usr/local/opt/asdf/libexec/asdf.fish
+    # source /usr/local/opt/asdf/asdf.fish
+    # source /usr/local/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
     set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
   case '*'
     echo Unknown uname
