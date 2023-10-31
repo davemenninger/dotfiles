@@ -105,6 +105,7 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
 end
 
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
