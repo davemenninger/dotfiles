@@ -44,7 +44,6 @@ vim.g['rainbow_active'] = 1
 vim.g['shades_of_purple_airline'] = 1
 vim.g['airline_theme'] = 'shades_of_purple'
 
-vim.cmd("colorscheme srcery")
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -270,6 +269,7 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
+vim.cmd("colorscheme srcery")
 vim.cmd [[
   nnoremap <space> za
 
