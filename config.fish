@@ -105,6 +105,7 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
 end
 
+[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
@@ -153,7 +154,9 @@ end
 
 function random_pokemon
   # https://github.com/dbernheisel/expokesay
-  [ -d "$HOME/.pokesay" ]; and sh (find "$HOME/.pokesay" -type f | shuf -n 1)
+  [ -d "$HOME/.pokesay" ]; and set p (find "$HOME/.pokesay" -type f | shuf -n 1)
+  [ -d "$HOME/.pokesay" ]; and sh $p
+  [ -d "$HOME/.pokesay" ]; and echo $(echo $p | string split '/' --fields 5 | string split '.' --fields 1)
 end
 
 if which nvim >/dev/null
@@ -232,9 +235,11 @@ switch (uname)
     set PATH $PATH /usr/local/bin
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
     test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
-    source /usr/local/opt/asdf/asdf.fish
-    source /usr/local/opt/asdf/libexec/asdf.fish
+    # source /usr/local/opt/asdf/asdf.fish
+    # source /usr/local/opt/asdf/libexec/asdf.fish
+    source /opt/homebrew/opt/asdf/libexec/asdf.fish
     set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
   case '*'
     echo Unknown uname
 end
+eval "$(/opt/homebrew/bin/brew shellenv)"
