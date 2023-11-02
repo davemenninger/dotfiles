@@ -102,6 +102,10 @@ require('packer').startup(function(use)
   use 'ryanoasis/vim-devicons'
   use 'tpope/vim-fugitive'
   use 'vim-test/vim-test'
+  use {
+    "folke/todo-comments.nvim",
+    dependencies = { "nvim-lua/plenary.nvim" },
+  }
 
   use {
     'folke/trouble.nvim',
@@ -253,6 +257,9 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- local actions = require("telescope.actions")
 local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
+local todo = require("todo-comments")
+
+-- todo.setup()
 
 telescope.setup {
   defaults = {
