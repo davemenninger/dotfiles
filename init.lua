@@ -298,7 +298,7 @@ local trouble = require("trouble.providers.telescope")
 local telescope = require("telescope")
 local todo = require("todo-comments")
 
--- todo.setup()
+todo.setup()
 
 telescope.setup {
   defaults = {
@@ -333,7 +333,7 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
-vim.cmd("colorscheme srcery")
+vim.cmd("colorscheme starry")
 vim.cmd [[
   nnoremap <space> za
 
