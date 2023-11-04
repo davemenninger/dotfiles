@@ -134,7 +134,7 @@ require('packer').startup(function(use)
   use 'jeetsukumaran/vim-buffergator'
   use 'luochen1990/rainbow'
   use 'nvim-tree/nvim-web-devicons'
-  use 'ryanoasis/vim-devicons'
+  -- use 'ryanoasis/vim-devicons'
   use 'tpope/vim-fugitive'
   use 'vim-test/vim-test'
   use {
@@ -241,6 +241,7 @@ lsp.preset("recommended")
 
 lsp.ensure_installed({
   'gopls',
+  'elixirls',
 })
 
 -- Fix Undefined global 'vim'
