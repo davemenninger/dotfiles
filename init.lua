@@ -41,7 +41,7 @@ vim.opt.wrapmargin = 8
 vim.opt.wrapscan = true
 
 vim.g['rainbow_active'] = 1
--- vim.g['airline_theme'] = 'random'
+vim.g['airline_theme'] = 'random'
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -128,14 +128,17 @@ require('packer').startup(function(use)
   end }
 
   --- General
+  -- use 'ctrlpvim/ctrlp.vim'
+  -- use 'ryanoasis/vim-devicons'
+  -- https://github.com/nvim-lualine/lualine.nvim
   use 'airblade/vim-gitgutter'
   use 'bling/vim-airline'
-  -- use 'ctrlpvim/ctrlp.vim'
   use 'jeetsukumaran/vim-buffergator'
   use 'luochen1990/rainbow'
   use 'nvim-tree/nvim-web-devicons'
-  -- use 'ryanoasis/vim-devicons'
   use 'tpope/vim-fugitive'
+  use 'tpope/vim-sleuth'
+  use 'tpope/vim-surround'
   use 'vim-test/vim-test'
   use {
     "folke/todo-comments.nvim",
@@ -339,7 +342,7 @@ vim.cmd [[
   nnoremap <space> za
 
   " Stop highlighting on Enter
-  " map <CR> :noh<CR>
+  map <CR> :noh<CR>
 
   " move across a wrapped line
   nnoremap j gj
