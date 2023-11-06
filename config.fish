@@ -105,7 +105,6 @@ function fish_prompt --description 'Write out the prompt'
   printf '%s' (__fish_git_prompt) "$__fish_prompt_normal" "$prompt_status" "$delim" ' '
 end
 
-[ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
 [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
 [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
 [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
@@ -236,10 +235,10 @@ switch (uname)
     set -g fish_user_paths "/usr/local/opt/curl/bin" $fish_user_paths
     test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish
     # source /usr/local/opt/asdf/asdf.fish
-    # source /usr/local/opt/asdf/libexec/asdf.fish
-    source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    [ -f /opt/homebrew/opt/asdf/libexec/asdf.fish ]; source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
     set -g fish_user_paths "/usr/local/sbin" $fish_user_paths
   case '*'
     echo Unknown uname
 end
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# eval "$(/opt/homebrew/bin/brew shellenv)"
