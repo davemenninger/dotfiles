@@ -9,17 +9,17 @@ task default: [:install]
 desc "install the dot files into user's home directory"
 task :install do
   replace_all = false
-  files = %w[vimrc rubocop.yml]
+  files = %w[.vimrc .rubocop.yml .gitconfig]
   files.each do |file|
-    system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ %r{/\/}
-    file_name = File.join(ENV['HOME'], ".#{file}")
+    system %(mkdir -p "$HOME/#{File.dirname(file)}") if file =~ %r{/\/}
+    file_name = File.join(ENV['HOME'], "#{file}")
     if File.exist?(file_name)
       if File.identical? file, file_name
-        puts "identical ~/.#{file}"
+        puts "identical ~/#{file}"
       elsif replace_all
         replace_file(file)
       else
-        print "overwrite ~/.#{file}? [ynaq] "
+        print "overwrite ~/#{file}? [ynaq] "
         case $stdin.gets.chomp
         when 'a'
           replace_all = true
@@ -29,7 +29,7 @@ task :install do
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file}"
+          puts "skipping ~/#{file}"
         end
       end
     else
@@ -39,8 +39,8 @@ task :install do
 end
 
 def link_file(file)
-  puts "linking ~/.#{file}"
-  system %(ln -s "$PWD/#{file}" "$HOME/.#{file}")
+  puts "linking ~/#{file}"
+  system %(ln -s "$PWD/#{file}" "$HOME/#{file}")
 end
 
 desc 'init and update the git submodules'
