@@ -337,6 +337,8 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
+local starry_config = {}
+require('starry').setup(starry_config)
 vim.cmd("colorscheme starry")
 vim.cmd [[
   nnoremap <space> za
