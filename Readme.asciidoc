@@ -1,14 +1,7 @@
 == Usage
 
 ```
-> rake
-```
-
-== Setup
-
-```
-> asdf install
-> gem install colorize
+> ./everything.bash
 ```
 
 == Credits
