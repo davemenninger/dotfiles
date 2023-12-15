@@ -86,5 +86,11 @@ function random_pokemon
   [ -d "$HOME/.pokesay" ]; and echo $(echo $p | string split '/' --fields 5 | string split '.' --fields 1)
 end
 
-# keep at the bottom
-eval "$(/opt/homebrew/bin/brew shellenv)"
+# keep brew shellenv at the bottom
+if test -f /opt/homebrew/bin/brew
+  eval "$(/opt/homebrew/bin/brew shellenv)"
+end
+
+if test -f /usr/local/bin/brew
+  eval "$(/usr/local/bin/brew shellenv)"
+end
