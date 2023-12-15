@@ -49,6 +49,10 @@ function fish_prompt --description 'Write out the prompt'
     set -g __fish_prompt_normal (set_color normal)
   end
 
+  if not set -q __fish_prompt_cwd
+    set -g __fish_prompt_cwd (set_color green)
+  end
+
   set -l prompt_status
   if test $last_status -ne 0
     if not set -q __fish_prompt_status
