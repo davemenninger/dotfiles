@@ -19,7 +19,7 @@ files = {
 desc "install the dot files into user's home directory"
 task :install do
   files.each do |src, dest|
-    print "compare #{src.ljust(18)} #{dest.ljust(18)} "
+    print "compare #{src.ljust(18).blue} #{dest.ljust(18)} "
     dest = File.expand_path(dest)
     if File.exist?(dest)
       src_file = File.new(src)
