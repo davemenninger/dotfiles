@@ -1,13 +1,13 @@
 #!/usr/bin/env bash
 set -e
 
-case `uname` in
+case $(uname) in
   Darwin)
     echo "= MacOS ="
     echo "== Homebrew =="
     brew bundle --file Brewfile
     echo "=== fonts ==="
-    brew bundle --file fonts.brewfile
+    brew bundle --file fonts.Brewfile
     ;;
   Linux)
     echo "= Linux ="
@@ -20,6 +20,9 @@ case `uname` in
 esac
 
 echo "= asdf ="
+asdf plugin-add lua
+asdf plugin-add nodejs
+asdf plugin-add ruby
 asdf install
 asdf reshim
 
@@ -33,7 +36,7 @@ rake
 
 echo "= fish ="
 echo "== fisher =="
-read -p "Install fisher (curl)? (y/n)?" choice
+read -n 1 -r -p "Install fisher (curl)? (y/n)?" choice
 case "$choice" in
   y|Y )
     if [ -f "$HOME/.config/fish/functions/fisher.fish" ]; then
