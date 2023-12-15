@@ -44,7 +44,9 @@ case "$choice" in
     else
       echo "installing fisher:"
       fish -c "curl -sL https://raw.githubusercontent.com/jorgebucaran/fisher/main/functions/fisher.fish | source && fisher install jorgebucaran/fisher"
+      fish -c "fisher install FabioAntunes/base16-fish-shell"
       fish -c "fisher install jethrokuan/z"
+      fish -c "fisher install jorgebucaran/getopts.fish"
     fi
     ;;
   n|N ) echo "skipping fisher";;
