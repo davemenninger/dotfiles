@@ -123,9 +123,8 @@ require('packer').startup(function(use)
     'rockyzhang24/arctic.nvim',
     requires = { 'rktjmp/lush.nvim' }
   }
-  use { 'ray-x/starry.nvim', setup = function()
-    vim.g.starry_italic_comments = true
-  end }
+  use 'ray-x/starry.nvim'
+
 
   --- General
   -- use 'ctrlpvim/ctrlp.vim'
