@@ -18,8 +18,9 @@ switch (uname)
     [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
   case Darwin
     [ -f /opt/homebrew/etc/grc.fish ]; and . /opt/homebrew/etc/grc.fish
-    [ -f /opt/homebrew/opt/asdf/libexec/asdf.fish ]; source /opt/homebrew/opt/asdf/libexec/asdf.fish
+    [ -f /opt/homebrew/opt/asdf/libexec/asdf.fish ]; and source /opt/homebrew/opt/asdf/libexec/asdf.fish
     [ -f /opt/homebrew/share/autojump/autojump.fish ]; and source /opt/homebrew/share/autojump/autojump.fish
+    [ -f /usr/local/opt/asdf/libexec/asdf.fish ]; and source /usr/local/opt/asdf/libexec/asdf.fish
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/opt/curl/bin
     fish_add_path /usr/local/sbin
@@ -43,22 +44,6 @@ set __fish_git_prompt_showupstream 'yes'
 function fish_prompt --description 'Write out the prompt'
   set -l delim '>'
   set -l last_status $status
-
-  switch $USER
-    case root
-      if not set -q __fish_prompt_cwd
-        if set -q fish_color_cwd_root
-          set -g __fish_prompt_cwd (set_color $fish_color_cwd_root)
-        else
-          set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-        end
-      end
-
-    case '*'
-      if not set -q __fish_prompt_cwd
-        set -g __fish_prompt_cwd (set_color $fish_color_cwd)
-      end
-  end
 
   if not set -q __fish_prompt_normal
     set -g __fish_prompt_normal (set_color normal)
