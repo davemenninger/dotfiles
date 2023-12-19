@@ -6,8 +6,30 @@ case $(uname) in
     echo "= MacOS ="
     echo "== Homebrew =="
     brew bundle --file Brewfile
+    echo "=== gamedev ==="
+    read -n 1 -r -p "Install gamedev.Brewfile? (y/n)?" choice
+    case "$choice" in
+      y|Y )
+        brew bundle --file gamedev.Brewfile
+        ;;
+      * ) echo "skipping gamedev.Brewfile";;
+    esac
     echo "=== fonts ==="
-    brew bundle --file fonts.Brewfile
+    read -n 1 -r -p "Install fonts.Brewfile? (y/n)?" choice
+    case "$choice" in
+      y|Y )
+        brew bundle --file fonts.Brewfile
+        ;;
+      * ) echo "skipping fonts.Brewfile";;
+    esac
+    echo "=== virtualization ==="
+    read -n 1 -r -p "Install virtualization.Brewfile? (y/n)?" choice
+    case "$choice" in
+      y|Y )
+        brew bundle --file virtualization.Brewfile
+        ;;
+      * ) echo "skipping virtualization.Brewfile";;
+    esac
     ;;
   Linux)
     echo "= Linux ="
