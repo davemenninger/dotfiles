@@ -345,7 +345,7 @@ vim.cmd [[
   nnoremap <space> za
 
   " Stop highlighting on Enter
-  map <CR> :noh<CR>
+  " map <CR> :noh<CR>
 
   " move across a wrapped line
   nnoremap j gj
