@@ -33,6 +33,8 @@ case $(uname) in
     ;;
   Linux)
     echo "= Linux ="
+    sudo apt install curl git make gcc unzip zlib1g-dev
+    source ~/.asdf/asdf.sh
     ;;
   *)
     echo "= unknown name ="
