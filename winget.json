@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-10-31T15:34:59.049-00:00",
+	"CreationDate" : "2024-11-25T12:17:17.559-00:00",
 	"Sources" : 
 	[
 		{
@@ -34,19 +34,22 @@
 					"PackageIdentifier" : "Alacritty.Alacritty"
 				},
 				{
+					"PackageIdentifier" : "WerWolv.ImHex"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
 					"PackageIdentifier" : "TortoiseSVN.TortoiseSVN"
 				},
 				{
+					"PackageIdentifier" : "JohnMacFarlane.Pandoc"
+				},
+				{
 					"PackageIdentifier" : "GnuWin32.Grep"
 				},
 				{
 					"PackageIdentifier" : "LibreWolf.LibreWolf"
-				},
-				{
-					"PackageIdentifier" : "Notepad++.Notepad++"
 				},
 				{
 					"PackageIdentifier" : "RescueTime.DesktopApp"
@@ -67,10 +70,16 @@
 					"PackageIdentifier" : "SQLite.SQLite"
 				},
 				{
+					"PackageIdentifier" : "Obsidian.Obsidian"
+				},
+				{
 					"PackageIdentifier" : "jqlang.jq"
 				},
 				{
 					"PackageIdentifier" : "sharkdp.fd"
+				},
+				{
+					"PackageIdentifier" : "waterlan.dos2unix"
 				},
 				{
 					"PackageIdentifier" : "zig.zig"
@@ -80,6 +89,9 @@
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2404"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.AppInstaller"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
@@ -92,7 +104,22 @@
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
+		},
+		{
+			"Packages" : 
+			[
+				{
+					"PackageIdentifier" : "XP8K0HKJFRXGCK"
+				}
+			],
+			"SourceDetails" : 
+			{
+				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
+				"Identifier" : "StoreEdgeFD",
+				"Name" : "msstore",
+				"Type" : "Microsoft.Rest"
+			}
 		}
 	],
-	"WinGetVersion" : "1.9.25180"
+	"WinGetVersion" : "1.9.25200"
 }
