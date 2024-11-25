@@ -145,6 +145,12 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth'
   use 'tpope/vim-surround'
   use 'vim-test/vim-test'
+  use 'vimwiki/vimwiki'
+
+  vim.cmd [[
+  let g:vimwiki_list = [{'path': '~/vimwiki', 'syntax': 'markdown', 'ext': 'md'}]
+  ]]
+
   use {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
