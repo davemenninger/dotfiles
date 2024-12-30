@@ -1,5 +1,5 @@
 echo "installing winget stuff..."
-winget import winget_dump.json
+winget import winget.json
 
 echo "installing pwsh modules..."
 Install-Module -Name Terminal-Icons -Repository PSGallery
