@@ -41,7 +41,7 @@ vim.opt.wrapmargin = 8
 vim.opt.wrapscan = true
 
 vim.g['rainbow_active'] = 1
-vim.g['airline_theme'] = 'random'
+vim.g['airline_theme'] = 'catppuccin'
 
 local vim = vim
 local execute = vim.api.nvim_command
@@ -139,6 +139,12 @@ require('packer').startup(function(use)
   use 'tpope/vim-sleuth'
   use 'tpope/vim-surround'
   use 'vim-test/vim-test'
+  use 'vimwiki/vimwiki'
+
+  vim.cmd [[
+    let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+  ]]
+
   use {
     "folke/todo-comments.nvim",
     dependencies = { "nvim-lua/plenary.nvim" },
