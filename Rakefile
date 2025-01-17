@@ -3,44 +3,52 @@
 # https://github.com/phstc/dotfiles/blob/master/Rakefile
 
 require 'rake'
+require 'colorize'
 
 task default: [:install]
 
+files = {
+  ".vimrc" => "~/.vimrc",
+  ".tmux.conf" => "~/.tmux.conf",
+  ".gitconfig" => "~/.gitconfig",
+  ".gitignore" => "~/.gitignore",
+  ".tmuxp" => "~/.tmuxp",
+  ".tool-versions" => "~/.tool-versions",
+}
+
 desc "install the dot files into user's home directory"
 task :install do
-  replace_all = false
-  files = %w[vimrc rubocop.yml]
-  files.each do |file|
-    system %(mkdir -p "$HOME/.#{File.dirname(file)}") if file =~ %r{/\/}
-    file_name = File.join(ENV['HOME'], ".#{file}")
-    if File.exist?(file_name)
-      if File.identical? file, file_name
-        puts "identical ~/.#{file}"
-      elsif replace_all
-        replace_file(file)
+  files.each do |src, dest|
+    print "compare #{src.ljust(18).blue} #{dest.ljust(18)} "
+    dest = File.expand_path(dest)
+    if File.exist?(dest)
+      src_file = File.new(src)
+      dest_file = File.new(dest)
+      if File.identical? src_file, dest_file
+        puts "identical!".green
       else
-        print "overwrite ~/.#{file}? [ynaq] "
+        puts "existing file differs!".red
+        # system %(diff -u "#{src}" "#{dest}")
+        print "overwrite #{dest.red}? [ynq] "
         case $stdin.gets.chomp
-        when 'a'
-          replace_all = true
-          replace_file(file)
         when 'y'
-          replace_file(file)
+          puts "TODO!"
+          # TODO: replace_file(file)
         when 'q'
           exit
         else
-          puts "skipping ~/.#{file}"
+          puts "skipping #{dest}"
         end
       end
     else
-      link_file(file)
+      link_file(src, dest)
     end
   end
 end
 
-def link_file(file)
-  puts "linking ~/.#{file}"
-  system %(ln -s "$PWD/#{file}" "$HOME/.#{file}")
+def link_file(src, dest)
+  puts "linking #{dest} -> #{src}".yellow
+  system %(ln -s "$PWD/#{src}" "#{dest}")
 end
 
 desc 'init and update the git submodules'
