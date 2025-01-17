@@ -16,6 +16,8 @@ switch (uname)
     [ -f /usr/local/etc/grc.fish ]; and . /usr/local/etc/grc.fish
     [ -f /usr/local/share/autojump/autojump.fish ]; and . /usr/local/share/autojump/autojump.fish
     [ -f /usr/share/autojump/autojump.fish ]; and . /usr/share/autojump/autojump.fish
+    alias pbcopy 'xclip -selection clipboard'
+    alias pbpaste 'xclip -selection clipboard -o'
   case Darwin
     [ -f /opt/homebrew/etc/grc.fish ]; and . /opt/homebrew/etc/grc.fish
     [ -f /opt/homebrew/opt/asdf/libexec/asdf.fish ]; and source /opt/homebrew/opt/asdf/libexec/asdf.fish
@@ -24,6 +26,7 @@ switch (uname)
     fish_add_path /usr/local/bin
     fish_add_path /usr/local/opt/curl/bin
     fish_add_path /usr/local/sbin
+    test -e {$HOME}/.iterm2_shell_integration.fish ; and source {$HOME}/.iterm2_shell_integration.fish    
   case '*'
     echo Unknown uname
 end
