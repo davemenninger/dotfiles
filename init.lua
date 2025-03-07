@@ -126,6 +126,12 @@ require('packer').startup(function(use)
   use 'ray-x/starry.nvim'
 
 
+  --- .NET
+  use 'OrangeT/vim-csharp'
+  -- use 'seblj/roslyn.nvim'
+  --- https://github.com/hrsh7th/vim-vsnip
+  --- https://github.com/OmniSharp/Omnisharp-vim
+
   --- General
   -- use 'ctrlpvim/ctrlp.vim'
   -- use 'ryanoasis/vim-devicons'
@@ -250,6 +256,7 @@ lsp.preset("recommended")
 lsp.ensure_installed({
   'gopls',
   'elixirls',
+  'omnisharp',
 })
 
 -- Fix Undefined global 'vim'
@@ -294,16 +301,10 @@ lsp.on_attach(function(_, bufnr)
   vim.keymap.set('i', '<left>', '<nop>')
   vim.keymap.set('i', '<right>', '<nop>')
 
-  local builtin = require('telescope.builtin')
-  vim.keymap.set('n', '<c-p>', builtin.find_files, {})
-  vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-  vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-  vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-  vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 end)
 
 -- local actions = require("telescope.actions")
-local trouble = require("trouble.providers.telescope")
+local trouble = require("trouble.sources.telescope")
 local telescope = require("telescope")
 local todo = require("todo-comments")
 
@@ -312,11 +313,18 @@ todo.setup()
 telescope.setup {
   defaults = {
     mappings = {
-      i = { ["<c-t>"] = trouble.open_with_trouble },
-      n = { ["<c-t>"] = trouble.open_with_trouble },
+      i = { ["<C-t>"] = trouble.open },
+      n = { ["<C-t>"] = trouble.open },
     },
   },
 }
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<c-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
 -- Disable folding in Telescope's result window.
 vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
 
@@ -346,8 +354,9 @@ vim.diagnostic.config({
 
 local starry_config = {}
 require('starry').setup(starry_config)
-vim.cmd("colorscheme starry")
+vim.cmd("colorscheme dracula")
 vim.cmd [[
+  autocmd BufNewFile,BufRead *.razor set filetype=cs
   nnoremap <space> za
 
   " Stop highlighting on Enter
