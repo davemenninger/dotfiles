@@ -22,12 +22,15 @@ Plug 'tpope/vim-fugitive'
 " Plug 'mhanberg/elixir.nvim'
 Plug 'neoclide/coc.nvim', {'branch': 'release'}
 Plug 'sheerun/vim-polyglot'
+" Plug 'brendalf/mix.nvim'
 
 call plug#end()
 
 " lua require("trouble").setup {}
 
 " lua require("elixir").setup()
+
+" lua require("mix").setup()
 
 let g:coc_global_extensions = ['coc-elixir', 'coc-diagnostic']
 

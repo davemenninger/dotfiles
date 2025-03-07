@@ -3,3 +3,5 @@
 .kitchen/
 .vagrant/
 .DS_Store
+lib/djm*
+*.patch

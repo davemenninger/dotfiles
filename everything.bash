@@ -33,8 +33,17 @@ case $(uname) in
     ;;
   Linux)
     echo "= Linux ="
-    sudo apt install curl git make gcc unzip zlib1g-dev
-    source ~/.asdf/asdf.sh
+    echo "== apt =="
+    sudo apt install curl git make gcc unzip zlib1g-dev fish
+    echo "== asdf =="
+    if [ -d ~/.asdf ]; then
+      echo "asdf appears to be installed"
+      source ~/.asdf/asdf.sh
+    else
+      echo "asdf not installed. cloning..."
+      git clone https://github.com/asdf-vm/asdf.git ~/.asdf --branch v0.14.1
+      source ~/.asdf/asdf.sh
+    fi
     ;;
   *)
     echo "= unknown name ="
