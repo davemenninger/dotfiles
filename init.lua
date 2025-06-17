@@ -177,71 +177,6 @@ require('packer').startup(function(use)
     requires = { { 'nvim-lua/plenary.nvim' } }
   }
 
-  use {
-    'VonHeikemen/lsp-zero.nvim',
-    branch = 'v1.x',
-    requires = {
-      -- LSP Support
-      { 'neovim/nvim-lspconfig' },
-      { 'williamboman/mason.nvim' },
-      { 'williamboman/mason-lspconfig.nvim' },
-
-      -- Autocompletion
-      { 'hrsh7th/nvim-cmp' },
-      { 'hrsh7th/cmp-buffer' },
-      { 'hrsh7th/cmp-path' },
-      { 'saadparwaiz1/cmp_luasnip' },
-      { 'hrsh7th/cmp-nvim-lsp' },
-      { 'hrsh7th/cmp-nvim-lua' },
-
-      -- Snippets
-      { 'L3MON4D3/LuaSnip' },
-      { 'rafamadriz/friendly-snippets' },
-    }
-  }
-
-  use({
-    'jose-elias-alvarez/null-ls.nvim',
-    event = 'BufRead',
-    requires = {
-      { "nvim-lua/plenary.nvim" },
-    },
-    config = function()
-      local nls = require('null-ls')
-
-      local fmt = nls.builtins.formatting
-      local dgn = nls.builtins.diagnostics
-
-      -- Configuring null-ls
-      nls.setup({
-        debug = true,
-        sources = {
-          -- # FORMATTING #
-          fmt.trim_whitespace.with({
-            filetypes = { 'text', 'sh', 'zsh', 'toml', 'make', 'conf', 'tmux' },
-          }),
-          -- NOTE:
-          -- 1. both needs to be enabled to so prettier can apply eslint fixes
-          -- 2. prettierd should come first to prevent occassional race condition
-          fmt.prettierd,
-          fmt.eslint_d,
-          fmt.rustfmt,
-          fmt.stylua,
-          fmt.goimports,
-          fmt.shfmt.with({
-            extra_args = { '-i', 4, '-ci', '-sr' },
-          }),
-          -- # DIAGNOSTICS #
-          nls.builtins.diagnostics.golangci_lint,
-          dgn.eslint_d,
-          dgn.shellcheck,
-          dgn.luacheck.with({
-            extra_args = { '--globals', 'vim', '--std', 'luajit' },
-          }),
-        },
-      })
-    end,
-  })
   -- Automatically set up your configuration after cloning packer.nvim
   -- Put this at the end after all plugins
   if packer_bootstrap then
@@ -249,59 +184,47 @@ require('packer').startup(function(use)
   end
 end)
 
-local lsp = require("lsp-zero")
 
-lsp.preset("recommended")
+-- local cmp = require('cmp')
+-- local cmp_select = { behavior = cmp.SelectBehavior.Select }
+-- local cmp_mappings = vim.lsp.defaults.cmp_mappings({
+  -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
+  -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
+  -- -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
+  -- ["<C-Space>"] = cmp.mapping.complete(),
+-- })
 
-lsp.ensure_installed({
-  'gopls',
-  'elixirls',
-  'omnisharp',
-})
+-- cmp_mappings['<Tab>'] = nil
+-- cmp_mappings['<S-Tab>'] = nil
 
--- Fix Undefined global 'vim'
-lsp.nvim_workspace()
+-- vim.lsp.setup_nvim_cmp({
+  -- mapping = cmp_mappings
+-- })
 
-local cmp = require('cmp')
-local cmp_select = { behavior = cmp.SelectBehavior.Select }
-local cmp_mappings = lsp.defaults.cmp_mappings({
-  ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  ["<C-Space>"] = cmp.mapping.complete(),
-})
+-- vim.lsp.on_attach(function(_, bufnr)
+  -- local opts = { buffer = bufnr, remap = false }
 
-cmp_mappings['<Tab>'] = nil
-cmp_mappings['<S-Tab>'] = nil
+  -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+  -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
+  -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
+  -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
+  -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
+  -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
+  -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
+  -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
+  -- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
+  -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
 
-lsp.setup_nvim_cmp({
-  mapping = cmp_mappings
-})
+  -- vim.keymap.set('n', '<up>', '<nop>')
+  -- vim.keymap.set('n', '<down>', '<nop>')
+  -- vim.keymap.set('n', '<left>', '<nop>')
+  -- vim.keymap.set('n', '<right>', '<nop>')
+  -- vim.keymap.set('i', '<up>', '<nop>')
+  -- vim.keymap.set('i', '<down>', '<nop>')
+  -- vim.keymap.set('i', '<left>', '<nop>')
+  -- vim.keymap.set('i', '<right>', '<nop>')
 
-lsp.on_attach(function(_, bufnr)
-  local opts = { buffer = bufnr, remap = false }
-
-  vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
-  vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-
-  vim.keymap.set('n', '<up>', '<nop>')
-  vim.keymap.set('n', '<down>', '<nop>')
-  vim.keymap.set('n', '<left>', '<nop>')
-  vim.keymap.set('n', '<right>', '<nop>')
-  vim.keymap.set('i', '<up>', '<nop>')
-  vim.keymap.set('i', '<down>', '<nop>')
-  vim.keymap.set('i', '<left>', '<nop>')
-  vim.keymap.set('i', '<right>', '<nop>')
-
-end)
+-- end)
 
 -- local actions = require("telescope.actions")
 local trouble = require("trouble.sources.telescope")
@@ -328,12 +251,9 @@ vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 -- Disable folding in Telescope's result window.
 vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
 
-lsp.setup()
-
-
 require 'nvim-treesitter.configs'.setup {
-  -- A list of parser names, or "all" (the five listed parsers should always be installed)
-  ensure_installed = { "go", "c", "lua", "vim", "vimdoc", "query" },
+  -- A list of parser names, or "all" (the listed parsers should always be installed)
+  ensure_installed = { "go", "c", "lua", "vim", "vimdoc", "query", "python", "javascript" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
