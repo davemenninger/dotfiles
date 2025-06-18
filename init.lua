@@ -141,44 +141,6 @@ require("lazy").setup({
       "folke/todo-comments.nvim",
       dependencies = { "nvim-lua/plenary.nvim" },
     },
-
-    {
-      "folke/trouble.nvim",
-      opts = {}, -- for default options, refer to the configuration section for custom setup.
-      cmd = "Trouble",
-      keys = {
-        {
-          "<leader>xx",
-          "<cmd>Trouble diagnostics toggle<cr>",
-          desc = "Diagnostics (Trouble)",
-        },
-        {
-          "<leader>xX",
-          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
-          desc = "Buffer Diagnostics (Trouble)",
-        },
-        {
-          "<leader>cs",
-          "<cmd>Trouble symbols toggle focus=false<cr>",
-          desc = "Symbols (Trouble)",
-        },
-        {
-          "<leader>cl",
-          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
-          desc = "LSP Definitions / references / ... (Trouble)",
-        },
-        {
-          "<leader>xL",
-          "<cmd>Trouble loclist toggle<cr>",
-          desc = "Location List (Trouble)",
-        },
-        {
-          "<leader>xQ",
-          "<cmd>Trouble qflist toggle<cr>",
-          desc = "Quickfix List (Trouble)",
-        },
-      },
-    },
     {
       'nvim-telescope/telescope.nvim', tag = '0.1.4',
       dependencies = { 'nvim-lua/plenary.nvim' }
@@ -205,22 +167,9 @@ require("lazy").setup({
 -- don't remember what this is for
 local vim = vim
 
--- vim.lsp.on_attach(function(_, bufnr)
-  -- local opts = { buffer = bufnr, remap = false }
-
-  -- vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
-  -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
-  -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
-  -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
-  -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
-  -- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
-  -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
--- end)
-
+require('starry').setup()
 require("telescope").setup()
 require("todo-comments").setup()
-require('starry').setup()
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
