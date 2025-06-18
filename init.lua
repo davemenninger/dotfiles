@@ -1,3 +1,164 @@
+-- Bootstrap lazy.nvim
+local lazypath = vim.fn.stdpath("data") .. "/lazy/lazy.nvim"
+if not (vim.uv or vim.loop).fs_stat(lazypath) then
+  local lazyrepo = "https://github.com/folke/lazy.nvim.git"
+  local out = vim.fn.system({ "git", "clone", "--filter=blob:none", "--branch=stable", lazyrepo, lazypath })
+  if vim.v.shell_error ~= 0 then
+    vim.api.nvim_echo({
+      { "Failed to clone lazy.nvim:\n", "ErrorMsg" },
+      { out, "WarningMsg" },
+      { "\nPress any key to exit..." },
+    }, true, {})
+    vim.fn.getchar()
+    os.exit(1)
+  end
+end
+vim.opt.rtp:prepend(lazypath)
+
+-- Make sure to setup `mapleader` and `maplocalleader` before
+-- loading lazy.nvim so that mappings are correct.
+-- This is also a good place to setup other settings (vim.opt)
+-- vim.g.mapleader = " "
+-- vim.g.maplocalleader = "\\"
+
+-- Setup lazy.nvim
+require("lazy").setup({
+  spec = {
+    -- add your plugins here
+
+    --- Colors
+    '2nthony/vitesse.nvim',
+    'altercation/vim-colors-solarized',
+    'bitfield/vim-gitgo',
+    'bkegley/gloombuddy',
+    'bluz71/vim-nightfly-colors',
+    'cpea2506/one_monokai.nvim',
+    'folke/tokyonight.nvim',
+    'joshdick/onedark.vim',
+    'judaew/ronny.nvim',
+    'marko-cerovac/material.nvim',
+    'maxmx03/FluoroMachine.nvim',
+    'mhartington/oceanic-next',
+    'Mofiqul/adwaita.nvim',
+    'morhetz/gruvbox',
+    'nanotech/jellybeans.vim',
+    'navarasu/onedark.nvim',
+    'neanias/everforest-nvim',
+    'NTBBloodbath/doom-one.nvim',
+    'nxvu699134/vn-night.nvim',
+    'nyngwang/nvimgelion',
+    'ofirgall/ofirkai.nvim',
+    'olimorris/onedarkpro.nvim',
+    'oxfist/night-owl.nvim',
+    'pineapplegiant/spaceduck',
+    'polirritmico/monokai-nightasty.nvim',
+    'ray-x/aurora',
+    'ray-x/starry.nvim',
+    'rebelot/kanagawa.nvim',
+    'Rigellute/shades-of-purple.vim',
+    'sainnhe/sonokai',
+    'savq/melange-nvim',
+    'sekke276/dark_flat.nvim',
+    'srcery-colors/srcery-vim',
+    'talha-akram/noctis.nvim',
+    'Th3Whit3Wolf/onebuddy',
+    'Th3Whit3Wolf/space-nvim',
+    'theacodes/witchhazel',
+    'titanzero/zephyrium',
+    'tomasr/molokai',
+    'yonlu/omni.vim',
+    'zootedb0t/citruszest.nvim',
+    { 'catppuccin/nvim', name = 'catppuccin' },
+    { 'dracula/vim', name = 'dracula' },
+    { 'Everblush/nvim', name = 'everblush' },
+    {
+      'glepnir/zephyr-nvim',
+      dependencies = { 'nvim-treesitter/nvim-treesitter', lazy = true },
+    },
+    {
+      'rockyzhang24/arctic.nvim',
+      dependencies = { 'rktjmp/lush.nvim' }
+    },
+
+    --- General
+    'airblade/vim-gitgutter',
+    'bling/vim-airline',
+    'jeetsukumaran/vim-buffergator',
+    'luochen1990/rainbow',
+    'nvim-treesitter/nvim-treesitter',
+    'vimwiki/vimwiki',
+    {'mason-org/mason.nvim',
+      config = function()
+        require("mason").setup()
+      end,
+    },
+    {
+      "folke/todo-comments.nvim",
+      dependencies = { "nvim-lua/plenary.nvim" },
+    },
+
+    {
+      "folke/trouble.nvim",
+      opts = {}, -- for default options, refer to the configuration section for custom setup.
+      cmd = "Trouble",
+      keys = {
+        {
+          "<leader>xx",
+          "<cmd>Trouble diagnostics toggle<cr>",
+          desc = "Diagnostics (Trouble)",
+        },
+        {
+          "<leader>xX",
+          "<cmd>Trouble diagnostics toggle filter.buf=0<cr>",
+          desc = "Buffer Diagnostics (Trouble)",
+        },
+        {
+          "<leader>cs",
+          "<cmd>Trouble symbols toggle focus=false<cr>",
+          desc = "Symbols (Trouble)",
+        },
+        {
+          "<leader>cl",
+          "<cmd>Trouble lsp toggle focus=false win.position=right<cr>",
+          desc = "LSP Definitions / references / ... (Trouble)",
+        },
+        {
+          "<leader>xL",
+          "<cmd>Trouble loclist toggle<cr>",
+          desc = "Location List (Trouble)",
+        },
+        {
+          "<leader>xQ",
+          "<cmd>Trouble qflist toggle<cr>",
+          desc = "Quickfix List (Trouble)",
+        },
+      },
+    },
+    {
+      'nvim-telescope/telescope.nvim', tag = '0.1.4',
+      dependencies = { 'nvim-lua/plenary.nvim' }
+    },
+
+    --- General
+    -- use 'ctrlpvim/ctrlp.vim'
+    -- use 'ryanoasis/vim-devicons'
+    -- https://github.com/nvim-lualine/lualine.nvim
+    -- use 'nvim-tree/nvim-web-devicons'
+    -- use 'tpope/vim-fugitive'
+    -- use 'tpope/vim-sleuth'
+    -- use 'tpope/vim-surround'
+    -- use 'vim-test/vim-test'
+  }, -- end of spec
+
+  -- Configure any other settings here. See the documentation for more details.
+  -- colorscheme that will be used when installing plugins.
+  install = { colorscheme = { "dracula" } },
+  -- automatically check for plugin updates
+  checker = { enabled = true },
+})
+-- don't fold the Lazy window itself
+vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
+
 -- set foldnestmax=10
 --- vim.api.nvim_set_option("clipboard","unnamed")
 --- vim.bo.swapfile = false
@@ -41,165 +202,10 @@ vim.opt.wrapmargin = 8
 vim.opt.wrapscan = true
 
 vim.g['rainbow_active'] = 1
-vim.g['airline_theme'] = 'catppuccin'
+vim.g['airline_theme'] = 'dracula'
 
+-- don't remember what this is for
 local vim = vim
-local execute = vim.api.nvim_command
-local fn = vim.fn
-
--- ensure that packer is installed
-local install_path = fn.stdpath('data') .. '/site/pack/packer/opt/packer.nvim'
-if fn.empty(fn.glob(install_path)) > 0 then
-  execute('!git clone https://github.com/wbthomason/packer.nvim ' .. install_path)
-  execute 'packadd packer.nvim'
-end
-
-vim.cmd('packadd packer.nvim')
-
-local packer = require 'packer'
-local util = require 'packer.util'
-
-packer.init({
-  package_root = util.join_paths(vim.fn.stdpath('data'), 'site', 'pack')
-})
-
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
-require('packer').startup(function(use)
-  -- Packer can manage itself
-  use 'wbthomason/packer.nvim'
-
-  --- Colors
-  use '2nthony/vitesse.nvim'
-  use 'Mofiqul/adwaita.nvim'
-  use 'NTBBloodbath/doom-one.nvim'
-  use 'Rigellute/shades-of-purple.vim'
-  use 'Th3Whit3Wolf/onebuddy'
-  use 'Th3Whit3Wolf/space-nvim'
-  use 'altercation/vim-colors-solarized'
-  use 'bitfield/vim-gitgo'
-  use 'bkegley/gloombuddy'
-  use 'bluz71/vim-nightfly-colors'
-  use 'catppuccin/nvim'
-  use 'cpea2506/one_monokai.nvim'
-  use 'dracula/vim'
-  use 'folke/tokyonight.nvim'
-  use 'joshdick/onedark.vim'
-  use 'judaew/ronny.nvim'
-  use 'marko-cerovac/material.nvim'
-  use 'maxmx03/FluoroMachine.nvim'
-  use 'mhartington/oceanic-next'
-  use 'morhetz/gruvbox'
-  use 'nanotech/jellybeans.vim'
-  use 'navarasu/onedark.nvim'
-  use 'neanias/everforest-nvim'
-  use 'nxvu699134/vn-night.nvim'
-  use 'nyngwang/nvimgelion'
-  use 'ofirgall/ofirkai.nvim'
-  use 'olimorris/onedarkpro.nvim'
-  use 'oxfist/night-owl.nvim'
-  use 'pineapplegiant/spaceduck'
-  use 'polirritmico/monokai-nightasty.nvim'
-  use 'ray-x/aurora'
-  use 'rebelot/kanagawa.nvim'
-  use 'sainnhe/sonokai'
-  use 'savq/melange-nvim'
-  use 'sekke276/dark_flat.nvim'
-  use 'srcery-colors/srcery-vim'
-  use 'talha-akram/noctis.nvim'
-  use 'theacodes/witchhazel'
-  use 'titanzero/zephyrium'
-  use 'tomasr/molokai'
-  use 'yonlu/omni.vim'
-  use 'zootedb0t/citruszest.nvim'
-  use { 'Everblush/nvim', as = 'everblush' }
-  use({ 'rose-pine/neovim', as = 'rose-pine' })
-  use({
-    'glepnir/zephyr-nvim',
-    requires = { 'nvim-treesitter/nvim-treesitter', opt = true },
-  })
-  use {
-    'rockyzhang24/arctic.nvim',
-    requires = { 'rktjmp/lush.nvim' }
-  }
-  use 'ray-x/starry.nvim'
-
-
-  --- .NET
-  use 'OrangeT/vim-csharp'
-  -- use 'seblj/roslyn.nvim'
-  --- https://github.com/hrsh7th/vim-vsnip
-  --- https://github.com/OmniSharp/Omnisharp-vim
-
-  --- General
-  -- use 'ctrlpvim/ctrlp.vim'
-  -- use 'ryanoasis/vim-devicons'
-  -- https://github.com/nvim-lualine/lualine.nvim
-  use 'airblade/vim-gitgutter'
-  use 'bling/vim-airline'
-  use 'jeetsukumaran/vim-buffergator'
-  use 'luochen1990/rainbow'
-  use 'nvim-tree/nvim-web-devicons'
-  use 'tpope/vim-fugitive'
-  use 'tpope/vim-sleuth'
-  use 'tpope/vim-surround'
-  use 'vim-test/vim-test'
-  use 'vimwiki/vimwiki'
-
-  vim.cmd [[
-    let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
-  ]]
-
-  use {
-    "folke/todo-comments.nvim",
-    dependencies = { "nvim-lua/plenary.nvim" },
-  }
-
-  use 'nvim-treesitter/nvim-treesitter'
-
-  use {
-    'folke/trouble.nvim',
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    opts = {
-      auto_open = true,                      -- automatically open the list when you have diagnostics
-      auto_close = true,                     -- automatically close the list when you have no diagnostics
-      auto_preview = true,                   -- automatically preview the location of the diagnostic. <esc> to close preview and go back to last window
-      action_keys = {                        -- key mappings for actions in the trouble list
-        jump = { "<tab>", "<2-leftmouse>" }, -- jump to the diagnostic or open / close folds
-        jump_close = { "<cr>", "o" },        -- jump to the diagnostic and close the list
-      },
-    },
-  }
-
-  use {
-    'nvim-telescope/telescope.nvim', tag = '0.1.4',
-    requires = { { 'nvim-lua/plenary.nvim' } }
-  }
-
-  -- Automatically set up your configuration after cloning packer.nvim
-  -- Put this at the end after all plugins
-  if packer_bootstrap then
-    require('packer').sync()
-  end
-end)
-
-
--- local cmp = require('cmp')
--- local cmp_select = { behavior = cmp.SelectBehavior.Select }
--- local cmp_mappings = vim.lsp.defaults.cmp_mappings({
-  -- ['<C-p>'] = cmp.mapping.select_prev_item(cmp_select),
-  -- ['<C-n>'] = cmp.mapping.select_next_item(cmp_select),
-  -- -- ['<C-y>'] = cmp.mapping.confirm({ select = true }),
-  -- ["<C-Space>"] = cmp.mapping.complete(),
--- })
-
--- cmp_mappings['<Tab>'] = nil
--- cmp_mappings['<S-Tab>'] = nil
-
--- vim.lsp.setup_nvim_cmp({
-  -- mapping = cmp_mappings
--- })
 
 -- vim.lsp.on_attach(function(_, bufnr)
   -- local opts = { buffer = bufnr, remap = false }
@@ -208,52 +214,19 @@ end)
   -- vim.keymap.set("n", "K", function() vim.lsp.buf.hover() end, opts)
   -- vim.keymap.set("n", "<leader>vws", function() vim.lsp.buf.workspace_symbol() end, opts)
   -- vim.keymap.set("n", "<leader>vd", function() vim.diagnostic.open_float() end, opts)
-  -- vim.keymap.set("n", "[d", function() vim.diagnostic.goto_next() end, opts)
-  -- vim.keymap.set("n", "]d", function() vim.diagnostic.goto_prev() end, opts)
   -- vim.keymap.set("n", "<leader>vca", function() vim.lsp.buf.code_action() end, opts)
   -- vim.keymap.set("n", "<leader>vrr", function() vim.lsp.buf.references() end, opts)
   -- vim.keymap.set("n", "<leader>vrn", function() vim.lsp.buf.rename() end, opts)
   -- vim.keymap.set("i", "<C-h>", function() vim.lsp.buf.signature_help() end, opts)
-
-  -- vim.keymap.set('n', '<up>', '<nop>')
-  -- vim.keymap.set('n', '<down>', '<nop>')
-  -- vim.keymap.set('n', '<left>', '<nop>')
-  -- vim.keymap.set('n', '<right>', '<nop>')
-  -- vim.keymap.set('i', '<up>', '<nop>')
-  -- vim.keymap.set('i', '<down>', '<nop>')
-  -- vim.keymap.set('i', '<left>', '<nop>')
-  -- vim.keymap.set('i', '<right>', '<nop>')
-
 -- end)
 
--- local actions = require("telescope.actions")
-local trouble = require("trouble.sources.telescope")
-local telescope = require("telescope")
-local todo = require("todo-comments")
-
-todo.setup()
-
-telescope.setup {
-  defaults = {
-    mappings = {
-      i = { ["<C-t>"] = trouble.open },
-      n = { ["<C-t>"] = trouble.open },
-    },
-  },
-}
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<c-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
-
--- Disable folding in Telescope's result window.
-vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
+require("telescope").setup()
+require("todo-comments").setup()
+require('starry').setup()
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
-  ensure_installed = { "go", "c", "lua", "vim", "vimdoc", "query", "python", "javascript" },
+  ensure_installed = { "go", "c", "c_sharp", "lua", "vim", "vimdoc", "query", "python", "javascript" },
 
   -- Install parsers synchronously (only applied to `ensure_installed`)
   sync_install = false,
@@ -261,7 +234,6 @@ require 'nvim-treesitter.configs'.setup {
   -- Automatically install missing parsers when entering buffer
   -- Recommendation: set to false if you don't have `tree-sitter` CLI installed locally
   auto_install = false,
-
 
   highlight = {
     enable = true,
@@ -272,17 +244,39 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
-local starry_config = {}
-require('starry').setup(starry_config)
 vim.cmd("colorscheme dracula")
 vim.cmd [[
+  let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+
   autocmd BufNewFile,BufRead *.razor set filetype=cs
   nnoremap <space> za
 
   " Stop highlighting on Enter
-  " map <CR> :noh<CR>
+  map <CR> :noh<CR>
 
   " move across a wrapped line
   nnoremap j gj
   nnoremap k gk
 ]]
+
+vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
+-- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
+
+-- Disable folding in Telescope's result window.
+vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
+
+-- disable arrow keys
+vim.keymap.set('n', '<up>', '<nop>')
+vim.keymap.set('n', '<down>', '<nop>')
+vim.keymap.set('n', '<left>', '<nop>')
+vim.keymap.set('n', '<right>', '<nop>')
+vim.keymap.set('i', '<up>', '<nop>')
+vim.keymap.set('i', '<down>', '<nop>')
+vim.keymap.set('i', '<left>', '<nop>')
+vim.keymap.set('i', '<right>', '<nop>')
+local builtin = require('telescope.builtin')
+vim.keymap.set('n', '<c-p>', builtin.find_files, {})
+vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
+vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
+vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
+vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
