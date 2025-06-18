@@ -21,6 +21,51 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = "\\"
 
+-- don't fold the Lazy window itself
+vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
+
+-- set foldnestmax=10
+--- vim.api.nvim_set_option("clipboard","unnamed")
+--- vim.bo.swapfile = false
+--- vim.o.backup = false
+--- vim.o.completeopt='menuone,noinsert,noselect'
+--- vim.o.undodir = vim.fn.stdpath('config') .. '/undodir'
+--- vim.o.undofile = true
+vim.opt.autoindent = true -- automatically set indent of new line
+vim.opt.background = 'dark'
+vim.opt.colorcolumn = '80'
+vim.opt.cursorcolumn = true
+vim.opt.cursorline = true
+vim.opt.errorbells = false
+vim.opt.expandtab = true
+vim.opt.foldenable = true
+vim.opt.foldmethod = 'indent'
+vim.opt.hidden = true
+vim.opt.hlsearch = true
+vim.opt.ignorecase = true
+vim.opt.incsearch = true
+vim.opt.linebreak = true -- set soft wrapping
+vim.opt.list = true
+vim.opt.listchars = { tab = '▸ ', trail = '·' }
+vim.opt.mouse = ""
+vim.opt.number = true -- show line numbers
+vim.opt.shiftwidth = 2
+vim.opt.showbreak = '↪'
+vim.opt.showmode = false
+vim.opt.signcolumn = 'yes'
+vim.opt.smartcase = true
+vim.opt.smartindent = true
+vim.opt.softtabstop = 2
+vim.opt.syntax = 'on'
+vim.opt.tabstop = 2
+vim.opt.termguicolors = true
+vim.opt.title = true
+vim.opt.ttyfast = true -- faster redrawing
+vim.opt.wildmenu = true
+vim.opt.wrap = true
+vim.opt.wrapmargin = 8
+vim.opt.wrapscan = true
+
 -- Setup lazy.nvim
 require("lazy").setup({
   spec = {
@@ -156,53 +201,6 @@ require("lazy").setup({
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
--- don't fold the Lazy window itself
-vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
-
--- set foldnestmax=10
---- vim.api.nvim_set_option("clipboard","unnamed")
---- vim.bo.swapfile = false
---- vim.o.backup = false
---- vim.o.completeopt='menuone,noinsert,noselect'
---- vim.o.undodir = vim.fn.stdpath('config') .. '/undodir'
---- vim.o.undofile = true
-vim.opt.autoindent = true -- automatically set indent of new line
-vim.opt.background = 'dark'
-vim.opt.colorcolumn = '80'
-vim.opt.cursorcolumn = true
-vim.opt.cursorline = true
-vim.opt.errorbells = false
-vim.opt.expandtab = true
-vim.opt.foldenable = true
-vim.opt.foldmethod = 'indent'
-vim.opt.hidden = true
-vim.opt.hlsearch = true
-vim.opt.ignorecase = true
-vim.opt.incsearch = true
-vim.opt.linebreak = true -- set soft wrapping
-vim.opt.list = true
-vim.opt.listchars = { tab = '▸ ', trail = '·' }
-vim.opt.mouse = ""
-vim.opt.number = true -- show line numbers
-vim.opt.shiftwidth = 2
-vim.opt.showbreak = '↪'
-vim.opt.showmode = false
-vim.opt.signcolumn = 'yes'
-vim.opt.smartcase = true
-vim.opt.smartindent = true
-vim.opt.softtabstop = 2
-vim.opt.syntax = 'on'
-vim.opt.tabstop = 2
-vim.opt.termguicolors = true
-vim.opt.title = true
-vim.opt.ttyfast = true -- faster redrawing
-vim.opt.wildmenu = true
-vim.opt.wrap = true
-vim.opt.wrapmargin = 8
-vim.opt.wrapscan = true
-
-vim.g['rainbow_active'] = 1
-vim.g['airline_theme'] = 'dracula'
 
 -- don't remember what this is for
 local vim = vim
@@ -280,3 +278,5 @@ vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
 vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+
+vim.g['airline_theme'] = 'dracula'
