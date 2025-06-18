@@ -129,7 +129,7 @@ require("lazy").setup({
     'airblade/vim-gitgutter',
     'bling/vim-airline',
     'jeetsukumaran/vim-buffergator',
-    'luochen1990/rainbow',
+    'hiphish/rainbow-delimiters.nvim',
     'nvim-treesitter/nvim-treesitter',
     'vimwiki/vimwiki',
     {'mason-org/mason.nvim',
