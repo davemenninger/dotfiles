@@ -95,12 +95,23 @@ require("lazy").setup({
     },
 
     --- General
-    'airblade/vim-gitgutter',
-    'bling/vim-airline',
-    'jeetsukumaran/vim-buffergator',
-    'hiphish/rainbow-delimiters.nvim',
-    'nvim-treesitter/nvim-treesitter',
-    'vimwiki/vimwiki',
+    "airblade/vim-gitgutter",
+    "hiphish/rainbow-delimiters.nvim",
+    "jeetsukumaran/vim-buffergator",
+    "nvim-treesitter/nvim-treesitter",
+    "vimwiki/vimwiki",
+    -- "bling/vim-airline",
+    -- "ctrlpvim/ctrlp.vim"
+    -- "nvim-tree/nvim-web-devicons"
+    -- "ryanoasis/vim-devicons"
+    -- "tpope/vim-fugitive"
+    -- "tpope/vim-sleuth"
+    -- "tpope/vim-surround"
+    -- "vim-test/vim-test"
+    {
+      'nvim-lualine/lualine.nvim',
+      dependencies = { 'nvim-tree/nvim-web-devicons' }
+    },
     {
       'mason-org/mason.nvim',
       config = function()
@@ -234,17 +245,6 @@ require("lazy").setup({
         },
       },
     },
-
-
-    --- General
-    -- use 'ctrlpvim/ctrlp.vim'
-    -- use 'ryanoasis/vim-devicons'
-    -- https://github.com/nvim-lualine/lualine.nvim
-    -- use 'nvim-tree/nvim-web-devicons'
-    -- use 'tpope/vim-fugitive'
-    -- use 'tpope/vim-sleuth'
-    -- use 'tpope/vim-surround'
-    -- use 'vim-test/vim-test'
   }, -- end of spec
 
   -- Configure any other settings here. See the documentation for more details.
@@ -254,13 +254,14 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require('starry').setup()
+require("lualine").setup({ options = { theme = "dracula" } })
+require("starry").setup()
 require("telescope").setup()
 require("todo-comments").setup()
 
 -- set colors
 vim.cmd("colorscheme dracula")
-vim.g.airline_theme = 'dracula'
+vim.g.airline_theme = "dracula"
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
