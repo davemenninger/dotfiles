@@ -23,9 +23,6 @@ vim.opt.rtp:prepend(lazypath)
 -- vim.g.mapleader = " "
 -- vim.g.maplocalleader = "\\"
 
--- don't fold the Lazy window itself
-vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
-
 -- set foldnestmax=10
 --- vim.api.nvim_set_option("clipboard","unnamed")
 --- vim.bo.swapfile = false
@@ -251,12 +248,10 @@ require("lazy").setup({
 
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "dracula" } },
+  install = { colorscheme = { "arctic" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
-
--- don't remember what this is for
 
 require('starry').setup()
 require("telescope").setup()
@@ -282,11 +277,9 @@ vim.diagnostic.config({
   virtual_text = true
 })
 
-vim.cmd("colorscheme dracula")
 vim.cmd [[
-  let g:vimwiki_list = [{'path': '~/vimwiki/', 'syntax': 'markdown', 'ext': 'md'}]
+  autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
 
-  autocmd BufNewFile,BufRead *.razor set filetype=cs
   nnoremap <space> za
 
   " Stop highlighting on Enter
@@ -297,9 +290,8 @@ vim.cmd [[
   nnoremap k gk
 ]]
 
-vim.cmd [[autocmd BufWritePre <buffer> lua vim.lsp.buf.format()]]
--- vim.cmd [[autocmd BufWritePre * lua vim.lsp.buf.format()]]
-
+-- don't fold the Lazy window itself
+vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
 -- Disable folding in Telescope's result window.
 vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
 
@@ -312,6 +304,7 @@ vim.keymap.set('i', '<up>', '<nop>')
 vim.keymap.set('i', '<down>', '<nop>')
 vim.keymap.set('i', '<left>', '<nop>')
 vim.keymap.set('i', '<right>', '<nop>')
+-- telescope shortcuts
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-p>', builtin.find_files, {})
 vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
@@ -319,4 +312,25 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
+-- set colors
+vim.cmd("colorscheme dracula")
 vim.g['airline_theme'] = 'dracula'
+
+-- if we're in a vimwiki folder, treat .md as filetype vimwiki
+vim.g.vimwiki_list = { path = { '*/vimwiki/' }, syntax = { 'markdown' }, ext = { 'md' } }
+
+
+-- treat .razor as filetype cs
+vim.api.nvim_create_autocmd(
+  {
+    "BufNewFile",
+    "BufRead",
+  },
+  {
+    pattern = "*.razor",
+    callback = function()
+      local buf = vim.api.nvim_get_current_buf()
+      vim.api.nvim_buf_set_option(buf, "filetype", "cs")
+    end
+  }
+)
