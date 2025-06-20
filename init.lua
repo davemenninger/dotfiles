@@ -254,14 +254,14 @@ require("lazy").setup({
   checker = { enabled = true },
 })
 
-require("lualine").setup({ options = { theme = "dracula" } })
+-- set colors
+vim.cmd("colorscheme dracula")
+
+require("lualine").setup({ options = { theme = "auto" } })
 require("starry").setup()
 require("telescope").setup()
 require("todo-comments").setup()
 
--- set colors
-vim.cmd("colorscheme dracula")
-vim.g.airline_theme = "dracula"
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
