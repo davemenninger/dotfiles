@@ -101,7 +101,8 @@ require("lazy").setup({
     'hiphish/rainbow-delimiters.nvim',
     'nvim-treesitter/nvim-treesitter',
     'vimwiki/vimwiki',
-    {'mason-org/mason.nvim',
+    {
+      'mason-org/mason.nvim',
       config = function()
         require("mason").setup()
       end,
@@ -248,7 +249,7 @@ require("lazy").setup({
 
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "arctic" } },
+  install = { colorscheme = { "dracula" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
@@ -256,6 +257,10 @@ require("lazy").setup({
 require('starry').setup()
 require("telescope").setup()
 require("todo-comments").setup()
+
+-- set colors
+vim.cmd("colorscheme dracula")
+vim.g.airline_theme = 'dracula'
 
 require 'nvim-treesitter.configs'.setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
@@ -273,27 +278,18 @@ require 'nvim-treesitter.configs'.setup {
   },
 }
 
-vim.diagnostic.config({
-  virtual_text = true
-})
+-- TODO: don't remember what this does
+vim.diagnostic.config({ virtual_text = true })
 
-vim.cmd [[
-  autocmd BufWritePre <buffer> lua vim.lsp.buf.format()
+-- move across wrapped lines
+vim.keymap.set('n', 'j', 'gj')
+vim.keymap.set('n', 'k', 'gk')
 
-  nnoremap <space> za
+-- use space to toggle fold under the cursor
+vim.keymap.set('n', '<space>', 'za')
 
-  " Stop highlighting on Enter
-  map <CR> :noh<CR>
-
-  " move across a wrapped line
-  nnoremap j gj
-  nnoremap k gk
-]]
-
--- don't fold the Lazy window itself
-vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
--- Disable folding in Telescope's result window.
-vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
+-- Stop highlighting on Enter
+vim.keymap.set('n', '<CR>', ':noh<CR>')
 
 -- disable arrow keys
 vim.keymap.set('n', '<up>', '<nop>')
@@ -304,6 +300,7 @@ vim.keymap.set('i', '<up>', '<nop>')
 vim.keymap.set('i', '<down>', '<nop>')
 vim.keymap.set('i', '<left>', '<nop>')
 vim.keymap.set('i', '<right>', '<nop>')
+
 -- telescope shortcuts
 local builtin = require('telescope.builtin')
 vim.keymap.set('n', '<c-p>', builtin.find_files, {})
@@ -312,13 +309,14 @@ vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
 vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
 vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
 
--- set colors
-vim.cmd("colorscheme dracula")
-vim.g['airline_theme'] = 'dracula'
-
 -- if we're in a vimwiki folder, treat .md as filetype vimwiki
 vim.g.vimwiki_list = { path = { '*/vimwiki/' }, syntax = { 'markdown' }, ext = { 'md' } }
 
+-- don't fold the Lazy window itself
+vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
+
+-- Disable folding in Telescope's result window.
+vim.api.nvim_create_autocmd("FileType", { pattern = "TelescopeResults", command = [[setlocal nofoldenable]] })
 
 -- treat .razor as filetype cs
 vim.api.nvim_create_autocmd(
@@ -331,6 +329,16 @@ vim.api.nvim_create_autocmd(
     callback = function()
       local buf = vim.api.nvim_get_current_buf()
       vim.api.nvim_buf_set_option(buf, "filetype", "cs")
+    end
+  }
+)
+
+-- autoformat pre-write
+vim.api.nvim_create_autocmd(
+  { "BufWritePre" },
+  {
+    callback = function()
+      vim.lsp.buf.format()
     end
   }
 )
