@@ -109,6 +109,10 @@ require("lazy").setup({
     -- "tpope/vim-surround"
     -- "vim-test/vim-test"
     {
+      "smjonas/inc-rename.nvim",
+      opts = {}
+    },
+    {
       'nvim-lualine/lualine.nvim',
       dependencies = { 'nvim-tree/nvim-web-devicons' }
     },
