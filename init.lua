@@ -98,15 +98,12 @@ require("lazy").setup({
     "airblade/vim-gitgutter",
     "hiphish/rainbow-delimiters.nvim",
     "jeetsukumaran/vim-buffergator",
+    "nvim-tree/nvim-web-devicons",
     "nvim-treesitter/nvim-treesitter",
+    "tpope/vim-fugitive",
     "vimwiki/vimwiki",
-    -- "bling/vim-airline",
-    -- "ctrlpvim/ctrlp.vim"
-    -- "nvim-tree/nvim-web-devicons"
     -- "ryanoasis/vim-devicons"
-    -- "tpope/vim-fugitive"
     -- "tpope/vim-sleuth"
-    -- "tpope/vim-surround"
     -- "vim-test/vim-test"
     {
       "smjonas/inc-rename.nvim",
