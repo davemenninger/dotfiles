@@ -11,7 +11,8 @@ config.keys = {
   { key = '"',  mods = "LEADER|SHIFT", action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
   { key = "%",  mods = "LEADER|SHIFT", action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
   { key = "b",  mods = "LEADER|CTRL",  action = wezterm.action { SendString = "\x02" } },
-  { key = "o",  mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Next" } }, -- why doesn't this work?
+  { key = "o",  mods = "LEADER",       action = wezterm.action { ActivatePaneDirection = "Next" } },
+  { key = ":",  mods = "LEADER|SHIFT", action = wezterm.action.ActivateCommandPalette },
 
   { key = "-",  mods = "LEADER",       action = wezterm.action { SplitVertical = { domain = "CurrentPaneDomain" } } },
   { key = "\\", mods = "LEADER",       action = wezterm.action { SplitHorizontal = { domain = "CurrentPaneDomain" } } },
