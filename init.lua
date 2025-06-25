@@ -31,31 +31,31 @@ vim.opt.rtp:prepend(lazypath)
 --- vim.o.undodir = vim.fn.stdpath('config') .. '/undodir'
 --- vim.o.undofile = true
 vim.opt.autoindent = true -- automatically set indent of new line
-vim.opt.background = 'dark'
-vim.opt.colorcolumn = '80'
+vim.opt.background = "dark"
+vim.opt.colorcolumn = "80"
 vim.opt.cursorcolumn = true
 vim.opt.cursorline = true
 vim.opt.errorbells = false
 vim.opt.expandtab = true
 vim.opt.foldenable = true
-vim.opt.foldmethod = 'indent'
+vim.opt.foldmethod = "indent"
 vim.opt.hidden = true
 vim.opt.hlsearch = true
 vim.opt.ignorecase = true
 vim.opt.incsearch = true
 vim.opt.linebreak = true -- set soft wrapping
 vim.opt.list = true
-vim.opt.listchars = { tab = '▸ ', trail = '·' }
+vim.opt.listchars = { tab = "▸ ", trail = "·" }
 vim.opt.mouse = ""
 vim.opt.number = true -- show line numbers
 vim.opt.shiftwidth = 2
-vim.opt.showbreak = '↪'
+vim.opt.showbreak = "↪"
 vim.opt.showmode = false
-vim.opt.signcolumn = 'yes'
+vim.opt.signcolumn = "yes"
 vim.opt.smartcase = true
 vim.opt.smartindent = true
 vim.opt.softtabstop = 2
-vim.opt.syntax = 'on'
+vim.opt.syntax = "on"
 vim.opt.tabstop = 2
 vim.opt.termguicolors = true
 vim.opt.title = true
@@ -69,29 +69,29 @@ vim.opt.wrapscan = true
 require("lazy").setup({
   spec = {
     --- Colors
-    'bluz71/vim-nightfly-colors',
-    'cpea2506/one_monokai.nvim',
-    'folke/tokyonight.nvim',
-    'joshdick/onedark.vim',
-    'judaew/ronny.nvim',
-    'morhetz/gruvbox',
-    'nxvu699134/vn-night.nvim',
-    'olimorris/onedarkpro.nvim',
-    'oxfist/night-owl.nvim',
-    'ray-x/aurora',
-    'ray-x/starry.nvim',
-    'rebelot/kanagawa.nvim',
-    'Rigellute/shades-of-purple.vim',
-    'sekke276/dark_flat.nvim',
-    'Th3Whit3Wolf/onebuddy',
-    'Th3Whit3Wolf/space-nvim',
-    'zootedb0t/citruszest.nvim',
-    { 'catppuccin/nvim', name = 'catppuccin' },
-    { 'dracula/vim',     name = 'dracula' },
-    { 'Everblush/nvim',  name = 'everblush' },
+    "bluz71/vim-nightfly-colors",
+    "cpea2506/one_monokai.nvim",
+    "folke/tokyonight.nvim",
+    "joshdick/onedark.vim",
+    "judaew/ronny.nvim",
+    "morhetz/gruvbox",
+    "nxvu699134/vn-night.nvim",
+    "olimorris/onedarkpro.nvim",
+    "oxfist/night-owl.nvim",
+    "ray-x/aurora",
+    "ray-x/starry.nvim",
+    "rebelot/kanagawa.nvim",
+    "Rigellute/shades-of-purple.vim",
+    "sekke276/dark_flat.nvim",
+    "Th3Whit3Wolf/onebuddy",
+    "Th3Whit3Wolf/space-nvim",
+    "zootedb0t/citruszest.nvim",
+    { "catppuccin/nvim", name = "catppuccin" },
+    { "dracula/vim",     name = "dracula" },
+    { "Everblush/nvim",  name = "everblush" },
     {
-      'rockyzhang24/arctic.nvim',
-      dependencies = { 'rktjmp/lush.nvim' }
+      "rockyzhang24/arctic.nvim",
+      dependencies = { "rktjmp/lush.nvim" }
     },
 
     --- General
@@ -110,11 +110,11 @@ require("lazy").setup({
       opts = {}
     },
     {
-      'nvim-lualine/lualine.nvim',
-      dependencies = { 'nvim-tree/nvim-web-devicons' }
+      "nvim-lualine/lualine.nvim",
+      dependencies = { "nvim-tree/nvim-web-devicons" }
     },
     {
-      'mason-org/mason.nvim',
+      "mason-org/mason.nvim",
       config = function()
         require("mason").setup()
       end,
@@ -124,29 +124,29 @@ require("lazy").setup({
       dependencies = { "nvim-lua/plenary.nvim" },
     },
     {
-      'nvim-telescope/telescope.nvim',
-      tag = '0.1.4',
-      dependencies = { 'nvim-lua/plenary.nvim' }
+      "nvim-telescope/telescope.nvim",
+      tag = "0.1.4",
+      dependencies = { "nvim-lua/plenary.nvim" }
     },
     {
-      'saghen/blink.cmp',
+      "saghen/blink.cmp",
       -- optional: provides snippets for the snippet source
-      dependencies = { 'rafamadriz/friendly-snippets' },
+      dependencies = { "rafamadriz/friendly-snippets" },
 
       -- use a release tag to download pre-built binaries
-      version = '1.*',
+      version = "1.*",
       -- AND/OR build from source, requires nightly: https://rust-lang.github.io/rustup/concepts/channels.html#working-with-nightly-rust
-      -- build = 'cargo build --release',
+      -- build = "cargo build --release",
       -- If you use nix, you can build from source using latest nightly rust with:
-      -- build = 'nix run .#build-plugin',
+      -- build = "nix run .#build-plugin",
 
-      ---@module 'blink.cmp'
+      ---@module "blink.cmp"
       ---@type blink.cmp.Config
       opts = {
-        -- 'default' (recommended) for mappings similar to built-in completions (C-y to accept)
-        -- 'super-tab' for mappings similar to vscode (tab to accept)
-        -- 'enter' for enter to accept
-        -- 'none' for no mappings
+        -- "default" (recommended) for mappings similar to built-in completions (C-y to accept)
+        -- "super-tab" for mappings similar to vscode (tab to accept)
+        -- "enter" for enter to accept
+        -- "none" for no mappings
         --
         -- All presets have the following mappings:
         -- C-space: Open menu or open docs if already open
@@ -155,12 +155,12 @@ require("lazy").setup({
         -- C-k: Toggle signature help (if signature.enabled = true)
         --
         -- See :h blink-cmp-config-keymap for defining your own keymap
-        keymap = { preset = 'default' },
+        keymap = { preset = "default" },
 
         appearance = {
-          -- 'mono' (default) for 'Nerd Font Mono' or 'normal' for 'Nerd Font'
+          -- "mono" (default) for "Nerd Font Mono" or "normal" for "Nerd Font"
           -- Adjusts spacing to ensure icons are aligned
-          nerd_font_variant = 'mono'
+          nerd_font_variant = "mono"
         },
 
         -- (Default) Only show the documentation popup when manually triggered
@@ -169,7 +169,7 @@ require("lazy").setup({
         -- Default list of enabled providers defined so that you can extend it
         -- elsewhere in your config, without redefining it, due to `opts_extend`
         sources = {
-          default = { 'lsp', 'path', 'snippets', 'buffer' },
+          default = { "lsp", "path", "snippets", "buffer" },
         },
 
         -- (Default) Rust fuzzy matcher for typo resistance and significantly better performance
@@ -182,8 +182,8 @@ require("lazy").setup({
       opts_extend = { "sources.default" }
     },
     {
-      'neovim/nvim-lspconfig',
-      dependencies = { 'saghen/blink.cmp' },
+      "neovim/nvim-lspconfig",
+      dependencies = { "saghen/blink.cmp" },
 
       -- example using `opts` for defining servers
       -- opts = {
@@ -192,21 +192,21 @@ require("lazy").setup({
       -- }
       -- },
       -- config = function(_, opts)
-      -- local lspconfig = require('lspconfig')
+      -- local lspconfig = require("lspconfig")
       -- for server, config in pairs(opts.servers) do
       -- -- passing config.capabilities to blink.cmp merges with the capabilities in your
-      -- -- `opts[server].capabilities, if you've defined it
-      -- config.capabilities = require('blink.cmp').get_lsp_capabilities(config.capabilities)
+      -- -- `opts[server].capabilities, if you"ve defined it
+      -- config.capabilities = require("blink.cmp").get_lsp_capabilities(config.capabilities)
       -- lspconfig[server].setup(config)
       -- end
       -- end
 
       -- example calling setup directly for each LSP
       config = function()
-        local capabilities = require('blink.cmp').get_lsp_capabilities()
-        local lspconfig = require('lspconfig')
+        local capabilities = require("blink.cmp").get_lsp_capabilities()
+        local lspconfig = require("lspconfig")
 
-        lspconfig['lua_ls'].setup({ capabilities = capabilities })
+        lspconfig["lua_ls"].setup({ capabilities = capabilities })
       end
     },
     {
@@ -263,8 +263,7 @@ require("starry").setup()
 require("telescope").setup()
 require("todo-comments").setup()
 
-
-require 'nvim-treesitter.configs'.setup {
+require "nvim-treesitter.configs".setup {
   -- A list of parser names, or "all" (the listed parsers should always be installed)
   ensure_installed = { "go", "c", "c_sharp", "lua", "vim", "vimdoc", "query", "python", "javascript" },
 
@@ -284,32 +283,32 @@ require 'nvim-treesitter.configs'.setup {
 vim.diagnostic.config({ virtual_text = true })
 
 -- move across wrapped lines
-vim.keymap.set('n', 'j', 'gj')
-vim.keymap.set('n', 'k', 'gk')
+vim.keymap.set("n", "j", "gj")
+vim.keymap.set("n", "k", "gk")
 
 -- use space to toggle fold under the cursor
-vim.keymap.set('n', '<space>', 'za')
+vim.keymap.set("n", "<space>", "za")
 
 -- Stop highlighting on Enter
-vim.keymap.set('n', '<CR>', ':noh<CR>')
+vim.keymap.set("n", "<CR>", ":noh<CR>")
 
 -- disable arrow keys
-vim.keymap.set('n', '<up>', '<nop>')
-vim.keymap.set('n', '<down>', '<nop>')
-vim.keymap.set('n', '<left>', '<nop>')
-vim.keymap.set('n', '<right>', '<nop>')
-vim.keymap.set('i', '<up>', '<nop>')
-vim.keymap.set('i', '<down>', '<nop>')
-vim.keymap.set('i', '<left>', '<nop>')
-vim.keymap.set('i', '<right>', '<nop>')
+vim.keymap.set("n", "<up>", "<nop>")
+vim.keymap.set("n", "<down>", "<nop>")
+vim.keymap.set("n", "<left>", "<nop>")
+vim.keymap.set("n", "<right>", "<nop>")
+vim.keymap.set("i", "<up>", "<nop>")
+vim.keymap.set("i", "<down>", "<nop>")
+vim.keymap.set("i", "<left>", "<nop>")
+vim.keymap.set("i", "<right>", "<nop>")
 
 -- telescope shortcuts
-local builtin = require('telescope.builtin')
-vim.keymap.set('n', '<c-p>', builtin.find_files, {})
-vim.keymap.set('n', '<leader>ff', builtin.find_files, {})
-vim.keymap.set('n', '<leader>fg', builtin.live_grep, {})
-vim.keymap.set('n', '<leader>fb', builtin.buffers, {})
-vim.keymap.set('n', '<leader>fh', builtin.help_tags, {})
+local builtin = require("telescope.builtin")
+vim.keymap.set("n", "<c-p>", builtin.find_files, {})
+vim.keymap.set("n", "<leader>ff", builtin.find_files, {})
+vim.keymap.set("n", "<leader>fg", builtin.live_grep, {})
+vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
+vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- if we're in a vimwiki folder, treat .md as filetype vimwiki
 vim.g.vimwiki_list = { path = { '*/vimwiki/' }, syntax = { 'markdown' }, ext = { 'md' } }
