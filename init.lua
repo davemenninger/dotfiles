@@ -311,7 +311,7 @@ vim.keymap.set("n", "<leader>fb", builtin.buffers, {})
 vim.keymap.set("n", "<leader>fh", builtin.help_tags, {})
 
 -- if we're in a vimwiki folder, treat .md as filetype vimwiki
-vim.g.vimwiki_list = { path = { '*/vimwiki/' }, syntax = { 'markdown' }, ext = { 'md' } }
+vim.g.vimwiki_list = { path = { "*/vimwiki/" }, syntax = { "markdown" }, ext = { "md" } }
 
 -- don't fold the Lazy window itself
 vim.api.nvim_create_autocmd("FileType", { pattern = "lazy_backdrop", command = [[setlocal nofoldenable]] })
