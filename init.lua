@@ -102,9 +102,6 @@ require("lazy").setup({
     "nvim-treesitter/nvim-treesitter",
     "tpope/vim-fugitive",
     "vimwiki/vimwiki",
-    -- "ryanoasis/vim-devicons"
-    -- "tpope/vim-sleuth"
-    -- "vim-test/vim-test"
     {
       "smjonas/inc-rename.nvim",
       opts = {}
@@ -246,19 +243,47 @@ require("lazy").setup({
         },
       },
     },
+    {
+      "folke/which-key.nvim",
+      event = "VeryLazy",
+      opts = {
+        -- your configuration comes here
+        -- or leave it empty to use the default settings
+        -- refer to the configuration section below
+      },
+      keys = {
+        {
+          "<leader>w",
+          function()
+            require("which-key").show({ global = false })
+          end,
+          desc = "Buffer Local Keymaps (which-key)",
+        },
+      },
+    },
+    "lewis6991/satellite.nvim",
+
+    --- Maybes
+    -- "kylechui/nvim-surround",
+    -- "lukas-reineke/indent-blankline.nvim",
+    -- "mfussenegger/nvim-lint",
+    -- "ryanoasis/vim-devicons"
+    -- "tpope/vim-sleuth"
+    -- "vim-test/vim-test"
   }, -- end of spec
 
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "dracula" } },
+  install = { colorscheme = { "tokyonight" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
 
 -- set colors
-vim.cmd("colorscheme dracula")
+vim.cmd("colorscheme tokyonight")
 
 require("lualine").setup({ options = { theme = "auto" } })
+require("satellite").setup()
 require("starry").setup()
 require("telescope").setup()
 require("todo-comments").setup()
@@ -343,3 +368,8 @@ vim.api.nvim_create_autocmd(
     end
   }
 )
+
+-- bind rename to rn
+vim.keymap.set("n", "<leader>rn", function()
+  return ":IncRename " .. vim.fn.expand("<cword>")
+end, { expr = true })
