@@ -45,6 +45,10 @@ case $(uname) in
       source ~/.asdf/asdf.sh
     fi
     ;;
+  MINGW64_NT-10.0-19045)
+    echo "= git bash for windows?!? ="
+    pwsh.exe windows_setup.ps1
+    ;;
   *)
     echo "= unknown name ="
     uname

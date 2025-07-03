@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2024-11-25T12:17:17.559-00:00",
+	"CreationDate" : "2025-07-03T15:30:21.481-00:00",
 	"Sources" : 
 	[
 		{
@@ -19,31 +19,61 @@
 					"PackageIdentifier" : "Mozilla.Firefox"
 				},
 				{
+					"PackageIdentifier" : "Notepad++.Notepad++"
+				},
+				{
 					"PackageIdentifier" : "JFLarvoire.Ag"
+				},
+				{
+					"PackageIdentifier" : "vim.vim"
 				},
 				{
 					"PackageIdentifier" : "version-fox.vfox"
 				},
 				{
-					"PackageIdentifier" : "Neovim.Neovim"
+					"PackageIdentifier" : "TortoiseSVN.TortoiseSVN"
 				},
 				{
 					"PackageIdentifier" : "GitHub.cli"
 				},
 				{
-					"PackageIdentifier" : "Alacritty.Alacritty"
+					"PackageIdentifier" : "Neovim.Neovim"
+				},
+				{
+					"PackageIdentifier" : "OSGeo.QGIS_LTR"
 				},
 				{
 					"PackageIdentifier" : "WerWolv.ImHex"
 				},
 				{
+					"PackageIdentifier" : "JohnMacFarlane.Pandoc"
+				},
+				{
+					"PackageIdentifier" : "Alacritty.Alacritty"
+				},
+				{
+					"PackageIdentifier" : "Inkscape.Inkscape"
+				},
+				{
+					"PackageIdentifier" : "wez.wezterm"
+				},
+				{
+					"PackageIdentifier" : "Clockify.Clockify"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.PowerShell"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
 				},
 				{
-					"PackageIdentifier" : "TortoiseSVN.TortoiseSVN"
+					"PackageIdentifier" : "Microsoft.Azure.FunctionsCoreTools"
 				},
 				{
-					"PackageIdentifier" : "JohnMacFarlane.Pandoc"
+					"PackageIdentifier" : "GnuWin32.DiffUtils"
 				},
 				{
 					"PackageIdentifier" : "GnuWin32.Grep"
@@ -52,10 +82,16 @@
 					"PackageIdentifier" : "LibreWolf.LibreWolf"
 				},
 				{
-					"PackageIdentifier" : "RescueTime.DesktopApp"
+					"PackageIdentifier" : "rjpcomputing.luaforwindows"
+				},
+				{
+					"PackageIdentifier" : "GnuWin32.Make"
 				},
 				{
 					"PackageIdentifier" : "BurntSushi.ripgrep.GNU"
+				},
+				{
+					"PackageIdentifier" : "DBeaver.DBeaver.Community"
 				},
 				{
 					"PackageIdentifier" : "GnuWin32.Which"
@@ -85,16 +121,25 @@
 					"PackageIdentifier" : "zig.zig"
 				},
 				{
+					"PackageIdentifier" : "MSYS2.MSYS2"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.PowerToys"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2404"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.CmdPalGitHubExtension"
+				},
+				{
 					"PackageIdentifier" : "Microsoft.AppInstaller"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.WindowsTerminal"
+				},
+				{
+					"PackageIdentifier" : "zadjii.ObsidianNotesExtension"
 				}
 			],
 			"SourceDetails" : 
@@ -104,22 +149,7 @@
 				"Name" : "winget",
 				"Type" : "Microsoft.PreIndexed.Package"
 			}
-		},
-		{
-			"Packages" : 
-			[
-				{
-					"PackageIdentifier" : "XP8K0HKJFRXGCK"
-				}
-			],
-			"SourceDetails" : 
-			{
-				"Argument" : "https://storeedgefd.dsx.mp.microsoft.com/v9.0",
-				"Identifier" : "StoreEdgeFD",
-				"Name" : "msstore",
-				"Type" : "Microsoft.Rest"
-			}
 		}
 	],
-	"WinGetVersion" : "1.9.25200"
+	"WinGetVersion" : "1.11.400"
 }
