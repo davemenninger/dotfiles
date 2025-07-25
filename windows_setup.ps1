@@ -7,6 +7,7 @@ Install-Module -Name posh-git -Repository PSGallery
 
 echo "shell theme..."
 oh-my-posh init pwsh --config 'C:\Users\dmenninger\AppData\Local\Programs\oh-my-posh\themes\onehalf.minimal.omp.json' | Invoke-Expression
+oh-my-posh init pwsh --config 'C:\Program Files (x86)\oh-my-posh\themes\onehalf.minimal.omp.json' | Invoke-Expression
 
 echo "installing WSL"
 wsl --install -d Ubuntu-24.04
