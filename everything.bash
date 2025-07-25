@@ -60,6 +60,7 @@ echo "= asdf ="
 asdf plugin-add lua
 asdf plugin-add nodejs
 asdf plugin-add ruby
+asdf plugin-add golang
 asdf install
 asdf reshim
 
