@@ -150,9 +150,6 @@ require("lazy").setup({
 -- set colors
 vim.cmd("colorscheme tokyonight")
 
--- vim.cmd("let g:signify_skip = { 'vcs': { 'allow': ['svn'] } }")
--- vim.cmd("set shell=/bin/bash")
-
 require("lualine").setup({ options = { theme = "auto" } })
 -- require("satellite").setup()
 require("starry").setup()
