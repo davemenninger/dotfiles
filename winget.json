@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-07-03T15:30:21.481-00:00",
+	"CreationDate" : "2025-08-27T09:44:59.503-00:00",
 	"Sources" : 
 	[
 		{
@@ -22,7 +22,10 @@
 					"PackageIdentifier" : "Notepad++.Notepad++"
 				},
 				{
-					"PackageIdentifier" : "JFLarvoire.Ag"
+					"PackageIdentifier" : "Microsoft.Office"
+				},
+				{
+					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
 					"PackageIdentifier" : "vim.vim"
@@ -34,13 +37,13 @@
 					"PackageIdentifier" : "TortoiseSVN.TortoiseSVN"
 				},
 				{
-					"PackageIdentifier" : "GitHub.cli"
-				},
-				{
 					"PackageIdentifier" : "Neovim.Neovim"
 				},
 				{
 					"PackageIdentifier" : "OSGeo.QGIS_LTR"
+				},
+				{
+					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
 				},
 				{
 					"PackageIdentifier" : "WerWolv.ImHex"
@@ -58,19 +61,10 @@
 					"PackageIdentifier" : "wez.wezterm"
 				},
 				{
-					"PackageIdentifier" : "Clockify.Clockify"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.PowerShell"
 				},
 				{
-					"PackageIdentifier" : "JanDeDobbeleer.OhMyPosh"
-				},
-				{
 					"PackageIdentifier" : "Microsoft.VisualStudioCode"
-				},
-				{
-					"PackageIdentifier" : "Microsoft.Azure.FunctionsCoreTools"
 				},
 				{
 					"PackageIdentifier" : "GnuWin32.DiffUtils"
@@ -88,7 +82,7 @@
 					"PackageIdentifier" : "GnuWin32.Make"
 				},
 				{
-					"PackageIdentifier" : "BurntSushi.ripgrep.GNU"
+					"PackageIdentifier" : "Famatech.Radmin.Client"
 				},
 				{
 					"PackageIdentifier" : "DBeaver.DBeaver.Community"
@@ -109,16 +103,10 @@
 					"PackageIdentifier" : "Obsidian.Obsidian"
 				},
 				{
-					"PackageIdentifier" : "jqlang.jq"
-				},
-				{
 					"PackageIdentifier" : "sharkdp.fd"
 				},
 				{
 					"PackageIdentifier" : "waterlan.dos2unix"
-				},
-				{
-					"PackageIdentifier" : "zig.zig"
 				},
 				{
 					"PackageIdentifier" : "MSYS2.MSYS2"
@@ -151,5 +139,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.11.400"
+	"WinGetVersion" : "1.11.430"
 }
