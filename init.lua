@@ -72,23 +72,11 @@ require("lazy").setup({
     "bluz71/vim-nightfly-colors",
     "cpea2506/one_monokai.nvim",
     "folke/tokyonight.nvim",
-    "joshdick/onedark.vim",
-    "judaew/ronny.nvim",
-    "morhetz/gruvbox",
-    "nxvu699134/vn-night.nvim",
-    "olimorris/onedarkpro.nvim",
-    "oxfist/night-owl.nvim",
-    "ray-x/aurora",
-    "ray-x/starry.nvim",
     "rebelot/kanagawa.nvim",
-    "Rigellute/shades-of-purple.vim",
-    "sekke276/dark_flat.nvim",
     "Th3Whit3Wolf/onebuddy",
-    "Th3Whit3Wolf/space-nvim",
     "zootedb0t/citruszest.nvim",
     { "catppuccin/nvim", name = "catppuccin" },
     { "dracula/vim",     name = "dracula" },
-    { "Everblush/nvim",  name = "everblush" },
     {
       "rockyzhang24/arctic.nvim",
       dependencies = { "rktjmp/lush.nvim" }
@@ -142,17 +130,16 @@ require("lazy").setup({
 
   -- Configure any other settings here. See the documentation for more details.
   -- colorscheme that will be used when installing plugins.
-  install = { colorscheme = { "tokyonight" } },
+  install = { colorscheme = { "arctic" } },
   -- automatically check for plugin updates
   checker = { enabled = true },
 })
 
 -- set colors
-vim.cmd("colorscheme tokyonight")
+vim.cmd("colorscheme arctic")
 
 require("lualine").setup({ options = { theme = "auto" } })
 -- require("satellite").setup()
-require("starry").setup()
 require("telescope").setup()
 require("todo-comments").setup()
 
