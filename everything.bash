@@ -34,7 +34,7 @@ case $(uname) in
   Linux)
     echo "= Linux ="
     echo "== apt =="
-    sudo apt install curl git make gcc unzip zlib1g-dev fish
+    sudo apt install curl git make gcc unzip zlib1g-dev fish libssl-dev
     echo "== asdf =="
     if [ -d ~/.asdf ]; then
       echo "asdf appears to be installed"
