@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2025-09-16T13:24:45.299-00:00",
+	"CreationDate" : "2026-04-01T09:34:01.634-00:00",
 	"Sources" : 
 	[
 		{
@@ -8,6 +8,9 @@
 			[
 				{
 					"PackageIdentifier" : "7zip.7zip"
+				},
+				{
+					"PackageIdentifier" : "Docker.DockerDesktop"
 				},
 				{
 					"PackageIdentifier" : "Git.Git"
@@ -28,7 +31,13 @@
 					"PackageIdentifier" : "Microsoft.OneDrive"
 				},
 				{
+					"PackageIdentifier" : "TablePlus.TablePlus"
+				},
+				{
 					"PackageIdentifier" : "JFLarvoire.Ag"
+				},
+				{
+					"PackageIdentifier" : "VideoLAN.VLC"
 				},
 				{
 					"PackageIdentifier" : "vim.vim"
@@ -50,6 +59,9 @@
 				},
 				{
 					"PackageIdentifier" : "WerWolv.ImHex"
+				},
+				{
+					"PackageIdentifier" : "PDFgear.PDFgear"
 				},
 				{
 					"PackageIdentifier" : "Inkscape.Inkscape"
@@ -79,6 +91,9 @@
 					"PackageIdentifier" : "GnuWin32.Make"
 				},
 				{
+					"PackageIdentifier" : "Python.Launcher"
+				},
+				{
 					"PackageIdentifier" : "Famatech.Radmin.Client"
 				},
 				{
@@ -88,16 +103,28 @@
 					"PackageIdentifier" : "DBeaver.DBeaver.Community"
 				},
 				{
+					"PackageIdentifier" : "Docker.DockerCLI"
+				},
+				{
+					"PackageIdentifier" : "Docker.DockerCompose"
+				},
+				{
 					"PackageIdentifier" : "GnuWin32.Which"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.NuGet"
 				},
 				{
+					"PackageIdentifier" : "Microsoft.Sysinternals.ProcessMonitor"
+				},
+				{
 					"PackageIdentifier" : "Postman.Postman"
 				},
 				{
 					"PackageIdentifier" : "SQLite.SQLite"
+				},
+				{
+					"PackageIdentifier" : "SumatraPDF.SumatraPDF"
 				},
 				{
 					"PackageIdentifier" : "Obsidian.Obsidian"
@@ -112,13 +139,13 @@
 					"PackageIdentifier" : "MSYS2.MSYS2"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.PowerToys"
+					"PackageIdentifier" : "Python.Python.3.13"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2404"
 				},
 				{
-					"PackageIdentifier" : "Microsoft.CmdPalGitHubExtension"
+					"PackageIdentifier" : "zig.zig"
 				},
 				{
 					"PackageIdentifier" : "Microsoft.AppInstaller"
@@ -130,7 +157,7 @@
 					"PackageIdentifier" : "Microsoft.WindowsApp"
 				},
 				{
-					"PackageIdentifier" : "zadjii.ObsidianNotesExtension"
+					"PackageIdentifier" : "Microsoft.WSL"
 				}
 			],
 			"SourceDetails" : 
@@ -142,5 +169,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.11.430"
+	"WinGetVersion" : "1.28.220"
 }
