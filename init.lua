@@ -228,3 +228,19 @@ vim.api.nvim_create_autocmd(
 vim.keymap.set("n", "<leader>rn", function()
   return ":IncRename " .. vim.fn.expand("<cword>")
 end, { expr = true })
+
+-- bind gd to go to definition
+vim.keymap.set("n", "gd", function() vim.lsp.buf.definition() end, opts)
+
+-- sort buffers in buffergator
+-- https://github.com/jeetsukumaran/vim-buffergator/blob/0514af606a3b41bbe82c33875179b53300a3cb86/doc/buffergator.txt#L341
+-- g:buffergator_sort_regime~
+--    Default: "bufnum"
+--    Sets the default sort regime for buffer listing:
+--        "bufnum" : sort by buffer number [default]
+--        "basename": sort by buffer file basename (followed by directory)
+--        "filepath": sort by full buffer filepath
+--        "extension": sort by buffer filename extension (followed by full
+--                    filepath)
+--        "mru": sort by most recently used
+vim.g.buffergator_sort_regime = "mru"
