@@ -1,10 +1,10 @@
-== Usage
+# Usage
 
 ```
 > ./everything.bash
 ```
 
-== Credits
+# Credits
 
 * http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
 * https://github.com/catppuccin/catppuccin/tree/main#-palette
