@@ -1,6 +1,6 @@
 {
 	"$schema" : "https://aka.ms/winget-packages.schema.2.0.json",
-	"CreationDate" : "2026-04-01T09:34:01.634-00:00",
+	"CreationDate" : "2026-07-30T14:01:00.518-00:00",
 	"Sources" : 
 	[
 		{
@@ -127,6 +127,9 @@
 					"PackageIdentifier" : "Obsidian.Obsidian"
 				},
 				{
+					"PackageIdentifier" : "marlocarlo.psmux"
+				},
+				{
 					"PackageIdentifier" : "sharkdp.fd"
 				},
 				{
@@ -137,6 +140,9 @@
 				},
 				{
 					"PackageIdentifier" : "Python.Python.3.13"
+				},
+				{
+					"PackageIdentifier" : "KaiKramer.KeyStoreExplorer"
 				},
 				{
 					"PackageIdentifier" : "Canonical.Ubuntu.2404"
@@ -166,5 +172,5 @@
 			}
 		}
 	],
-	"WinGetVersion" : "1.28.220"
+	"WinGetVersion" : "1.29.280"
 }
