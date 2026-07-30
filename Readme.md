@@ -6,11 +6,7 @@
 
 # Credits
 
-* http://blog.smalleycreative.com/tutorials/using-git-and-github-to-manage-your-dotfiles/
-* https://github.com/catppuccin/catppuccin/tree/main#-palette
 * https://github.com/omerxx/dotfiles/blob/master/tmux/tmux.conf
 * https://github.com/phstc/dotfiles/blob/master/Rakefile
 * https://github.com/tmux-plugins/tpm#installing-plugins
-* https://thoughtbot.com/upcase/tmux
 * https://vonheikemen.github.io/devlog/tools/configuring-neovim-using-lua/
-* tpope: https://github.com/tpope/vim-sensible , https://github.com/tpope/vim-sleuth, ...
