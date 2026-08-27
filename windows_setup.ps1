@@ -1,3 +1,5 @@
+cp ~\git\dotfiles\.tmux.conf ~\.tmux.conf
+
 echo "installing winget stuff..."
 winget import winget.json
 
